@@ -11,6 +11,8 @@
 		550DAEF12E3CBD5C00EC2033 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAEF02E3CBD5C00EC2033 /* Route.swift */; };
 		550DAEFC2E3CBFAC00EC2033 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAEFB2E3CBFAC00EC2033 /* Typealiases.swift */; };
 		550DAEFF2E3CC0EC00EC2033 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 550DAEFE2E3CC0EC00EC2033 /* Images.xcassets */; };
+		550DAF0E2E3CE68000EC2033 /* DQButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF0D2E3CE68000EC2033 /* DQButtonStyle.swift */; };
+		550DAF102E3CE84F00EC2033 /* DQContainerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF0F2E3CE84F00EC2033 /* DQContainerStyle.swift */; };
 		5571DDE02E3CBB6C00EDB4AA /* DailyQuizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5571DDDF2E3CBB6C00EDB4AA /* DailyQuizApp.swift */; };
 		5571DDE22E3CBB6C00EDB4AA /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5571DDE12E3CBB6C00EDB4AA /* RootView.swift */; };
 		5571DDE42E3CBB6F00EDB4AA /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5571DDE32E3CBB6F00EDB4AA /* Colors.xcassets */; };
@@ -22,6 +24,8 @@
 		550DAEF02E3CBD5C00EC2033 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		550DAEFB2E3CBFAC00EC2033 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		550DAEFE2E3CC0EC00EC2033 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		550DAF0D2E3CE68000EC2033 /* DQButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DQButtonStyle.swift; sourceTree = "<group>"; };
+		550DAF0F2E3CE84F00EC2033 /* DQContainerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DQContainerStyle.swift; sourceTree = "<group>"; };
 		5571DDDC2E3CBB6C00EDB4AA /* DailyQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5571DDDF2E3CBB6C00EDB4AA /* DailyQuizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyQuizApp.swift; sourceTree = "<group>"; };
 		5571DDE12E3CBB6C00EDB4AA /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 			isa = PBXGroup;
 			children = (
 				550DAEFA2E3CBFA500EC2033 /* Helpers */,
+				550DAF0C2E3CE66200EC2033 /* Styles */,
+				550DAEFD2E3CBFD500EC2033 /* ReusableLayer */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -126,6 +132,31 @@
 			path = ReusableLayer;
 			sourceTree = "<group>";
 		};
+		550DAF0C2E3CE66200EC2033 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				550DAF112E3CEF4C00EC2033 /* Button */,
+				550DAF122E3CEF5200EC2033 /* Container */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		550DAF112E3CEF4C00EC2033 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				550DAF0D2E3CE68000EC2033 /* DQButtonStyle.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		550DAF122E3CEF5200EC2033 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				550DAF0F2E3CE84F00EC2033 /* DQContainerStyle.swift */,
+			);
+			path = Container;
+			sourceTree = "<group>";
+		};
 		5571DDD32E3CBB6B00EDB4AA = {
 			isa = PBXGroup;
 			children = (
@@ -152,7 +183,6 @@
 				550DAEF82E3CBF4600EC2033 /* Services */,
 				550DAEF42E3CBE3300EC2033 /* Models */,
 				550DAEF32E3CBE1E00EC2033 /* Library */,
-				550DAEFD2E3CBFD500EC2033 /* ReusableLayer */,
 				550DAEF22E3CBE0500EC2033 /* Resources */,
 				5571DDE52E3CBB6F00EDB4AA /* Preview Content */,
 			);
@@ -238,7 +268,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				550DAF0E2E3CE68000EC2033 /* DQButtonStyle.swift in Sources */,
 				5571DDE22E3CBB6C00EDB4AA /* RootView.swift in Sources */,
+				550DAF102E3CE84F00EC2033 /* DQContainerStyle.swift in Sources */,
 				550DAEF12E3CBD5C00EC2033 /* Route.swift in Sources */,
 				550DAEFC2E3CBFAC00EC2033 /* Typealiases.swift in Sources */,
 				550DAEEF2E3CBD5800EC2033 /* Router.swift in Sources */,
