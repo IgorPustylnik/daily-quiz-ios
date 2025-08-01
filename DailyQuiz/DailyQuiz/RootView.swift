@@ -8,8 +8,20 @@
 import SwiftUI
 
 struct RootView: View {
+    @ObservedObject
+    private var router = Router.shared
+
     var body: some View {
-        VStack {
+        ZStack {
+            Color.App.purple
+                .ignoresSafeArea()
+            
+            switch router.path.last {
+            case .home:
+                HomeAssembly().build(router: router)
+            case .none:
+                EmptyView()
+            }
         }
     }
 }

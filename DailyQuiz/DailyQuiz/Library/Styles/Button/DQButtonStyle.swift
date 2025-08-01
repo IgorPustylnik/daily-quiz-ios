@@ -63,9 +63,3 @@ struct DQButtonStyle: ButtonStyle {
         }
     }
 }
-
-extension Button {
-    func dqButtonStyle(_ type: DQButtonStyle.ButtonType) -> some View {
-        buttonStyle(DQButtonStyle(type))
-    }
-}
