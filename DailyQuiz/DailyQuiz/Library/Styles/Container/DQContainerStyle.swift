@@ -8,12 +8,23 @@
 import SwiftUI
 
 struct DQContainerStyle: ViewModifier {
+
+    // MARK: - Constants
+
+    private enum Constants {
+        static let hPadding: CGFloat = 24
+        static let vPadding: CGFloat = 32
+        static let cornerRadius: CGFloat = 46
+    }
+
+    // MARK: - Body
+
     func body(content: Content) -> some View {
         content
-            .padding(.horizontal, 24)
-            .padding(.vertical, 32)
+            .padding(.horizontal, Constants.hPadding)
+            .padding(.vertical, Constants.vPadding)
             .background(Color.App.white)
-            .clipShape(.rect(cornerRadius: 46))
+            .clipShape(.rect(cornerRadius: Constants.cornerRadius))
     }
 }
 
