@@ -11,6 +11,11 @@
 		550DAEF12E3CBD5C00EC2033 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAEF02E3CBD5C00EC2033 /* Route.swift */; };
 		550DAEFC2E3CBFAC00EC2033 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAEFB2E3CBFAC00EC2033 /* Typealiases.swift */; };
 		550DAEFF2E3CC0EC00EC2033 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 550DAEFE2E3CC0EC00EC2033 /* Images.xcassets */; };
+		550DAF042E3CDC6D00EC2033 /* HomeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF032E3CDC6D00EC2033 /* HomeAssembly.swift */; };
+		550DAF062E3CDC7200EC2033 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF052E3CDC7200EC2033 /* HomeViewModel.swift */; };
+		550DAF082E3CDC7700EC2033 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF072E3CDC7700EC2033 /* HomeView.swift */; };
+		550DAF0E2E3CE68000EC2033 /* DQButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF0D2E3CE68000EC2033 /* DQButtonStyle.swift */; };
+		550DAF102E3CE84F00EC2033 /* DQContainerStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF0F2E3CE84F00EC2033 /* DQContainerStyle.swift */; };
 		5571DDE02E3CBB6C00EDB4AA /* DailyQuizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5571DDDF2E3CBB6C00EDB4AA /* DailyQuizApp.swift */; };
 		5571DDE22E3CBB6C00EDB4AA /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5571DDE12E3CBB6C00EDB4AA /* RootView.swift */; };
 		5571DDE42E3CBB6F00EDB4AA /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5571DDE32E3CBB6F00EDB4AA /* Colors.xcassets */; };
@@ -22,6 +27,11 @@
 		550DAEF02E3CBD5C00EC2033 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		550DAEFB2E3CBFAC00EC2033 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		550DAEFE2E3CC0EC00EC2033 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		550DAF032E3CDC6D00EC2033 /* HomeAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeAssembly.swift; sourceTree = "<group>"; };
+		550DAF052E3CDC7200EC2033 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		550DAF072E3CDC7700EC2033 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		550DAF0D2E3CE68000EC2033 /* DQButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DQButtonStyle.swift; sourceTree = "<group>"; };
+		550DAF0F2E3CE84F00EC2033 /* DQContainerStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DQContainerStyle.swift; sourceTree = "<group>"; };
 		5571DDDC2E3CBB6C00EDB4AA /* DailyQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5571DDDF2E3CBB6C00EDB4AA /* DailyQuizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyQuizApp.swift; sourceTree = "<group>"; };
 		5571DDE12E3CBB6C00EDB4AA /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -62,6 +72,8 @@
 			isa = PBXGroup;
 			children = (
 				550DAEFA2E3CBFA500EC2033 /* Helpers */,
+				550DAF0C2E3CE66200EC2033 /* Styles */,
+				550DAEFD2E3CBFD500EC2033 /* ReusableLayer */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -107,6 +119,7 @@
 		550DAEF92E3CBF5900EC2033 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				550DAF002E3CDC4E00EC2033 /* Home */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -124,6 +137,41 @@
 			children = (
 			);
 			path = ReusableLayer;
+			sourceTree = "<group>";
+		};
+		550DAF002E3CDC4E00EC2033 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				550DAF032E3CDC6D00EC2033 /* HomeAssembly.swift */,
+				550DAF052E3CDC7200EC2033 /* HomeViewModel.swift */,
+				550DAF072E3CDC7700EC2033 /* HomeView.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		550DAF0C2E3CE66200EC2033 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				550DAF112E3CEF4C00EC2033 /* Button */,
+				550DAF122E3CEF5200EC2033 /* Container */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		550DAF112E3CEF4C00EC2033 /* Button */ = {
+			isa = PBXGroup;
+			children = (
+				550DAF0D2E3CE68000EC2033 /* DQButtonStyle.swift */,
+			);
+			path = Button;
+			sourceTree = "<group>";
+		};
+		550DAF122E3CEF5200EC2033 /* Container */ = {
+			isa = PBXGroup;
+			children = (
+				550DAF0F2E3CE84F00EC2033 /* DQContainerStyle.swift */,
+			);
+			path = Container;
 			sourceTree = "<group>";
 		};
 		5571DDD32E3CBB6B00EDB4AA = {
@@ -152,7 +200,6 @@
 				550DAEF82E3CBF4600EC2033 /* Services */,
 				550DAEF42E3CBE3300EC2033 /* Models */,
 				550DAEF32E3CBE1E00EC2033 /* Library */,
-				550DAEFD2E3CBFD500EC2033 /* ReusableLayer */,
 				550DAEF22E3CBE0500EC2033 /* Resources */,
 				5571DDE52E3CBB6F00EDB4AA /* Preview Content */,
 			);
@@ -238,9 +285,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				550DAF042E3CDC6D00EC2033 /* HomeAssembly.swift in Sources */,
+				550DAF0E2E3CE68000EC2033 /* DQButtonStyle.swift in Sources */,
 				5571DDE22E3CBB6C00EDB4AA /* RootView.swift in Sources */,
+				550DAF062E3CDC7200EC2033 /* HomeViewModel.swift in Sources */,
+				550DAF102E3CE84F00EC2033 /* DQContainerStyle.swift in Sources */,
 				550DAEF12E3CBD5C00EC2033 /* Route.swift in Sources */,
 				550DAEFC2E3CBFAC00EC2033 /* Typealiases.swift in Sources */,
+				550DAF082E3CDC7700EC2033 /* HomeView.swift in Sources */,
 				550DAEEF2E3CBD5800EC2033 /* Router.swift in Sources */,
 				5571DDE02E3CBB6C00EDB4AA /* DailyQuizApp.swift in Sources */,
 			);
@@ -301,7 +353,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -358,7 +410,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -382,8 +434,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -411,8 +464,9 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
