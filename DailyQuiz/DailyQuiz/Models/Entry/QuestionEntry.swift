@@ -9,14 +9,12 @@ import Foundation
 
 struct QuestionEntry: Decodable {
     let type: QuestionType
-    let difficulty: TriviaDifficulty
-    let category: TriviaCategory
     let question: String
     let correctAnswer: String
     let incorrectAnswers: [String]
 
     enum CodingKeys: String, CodingKey {
-        case type, difficulty, category, question
+        case type, question
         case correctAnswer = "correct_answer"
         case incorrectAnswers = "incorrect_answers"
     }

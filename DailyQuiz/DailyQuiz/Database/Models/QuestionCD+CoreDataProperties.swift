@@ -17,8 +17,6 @@ extension QuestionCD {
 
     @NSManaged public var id: UUID
     @NSManaged public var type: String
-    @NSManaged public var difficulty: String
-    @NSManaged public var category: String
     @NSManaged public var question: String
     @NSManaged public var answers: NSOrderedSet
     @NSManaged public var quiz: QuizCD

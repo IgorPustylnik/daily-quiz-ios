@@ -18,13 +18,10 @@ extension QuizEntity: DTODecodable {
     typealias DTO = QuizEntry
 
     static func from(dto model: DTO) throws -> Self {
-        guard let firstQuestion = model.results.first else {
-            throw NSError(domain: "No questions in the quiz", code: 1)
-        }
         return try .init(
-            name: "Quiz \(Date.now.formatted(.dateTime))",
-            difficulty: firstQuestion.difficulty,
-            category: firstQuestion.category,
+            name: "Quiz \(Int.random(in: 1..<100))",
+            difficulty: .unknown,
+            category: .unknown,
             questions: model.results.map { try .from(dto: $0) }
         )
     }
