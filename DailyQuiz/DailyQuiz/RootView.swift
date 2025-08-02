@@ -14,6 +14,8 @@ struct RootView: View {
     @ObservedObject
     private var router = Router.shared
 
+    private var persistentStorage: PersistentStorage = CoreDataService.shared
+
     @Namespace
     private var transitionNamespace
 
@@ -28,7 +30,12 @@ struct RootView: View {
             case .none:
                 HomeAssembly().build(router: router, namespace: transitionNamespace)
             case .quiz(let quiz):
-                QuizAssembly().build(router: router, quiz: quiz, namespace: transitionNamespace)
+                QuizAssembly().build(
+                    router: router,
+                    quiz: quiz,
+                    persistentStorage: persistentStorage,
+                    namespace: transitionNamespace
+                )
             case .quizResults(let completedQuiz, let isBrief):
                 QuizResultsAssembly().build(router: router, completedQuiz: completedQuiz, isBrief: isBrief)
             }

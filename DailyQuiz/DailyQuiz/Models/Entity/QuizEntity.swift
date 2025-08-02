@@ -8,6 +8,7 @@
 import Foundation
 
 struct QuizEntity: Hashable {
+    let name: String
     let questions: [QuestionEntity]
 }
 
@@ -16,6 +17,7 @@ extension QuizEntity: DTODecodable {
 
     static func from(dto model: DTO) throws -> Self {
         try .init(
+            name: "Quiz \(Date.now.formatted(.dateTime))",
             questions: model.results.map { try .from(dto: $0) }
         )
     }

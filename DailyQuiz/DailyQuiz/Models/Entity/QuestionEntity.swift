@@ -8,12 +8,28 @@
 import Foundation
 
 struct QuestionEntity: Identifiable, Hashable {
-    let id: UUID = .init()
+    let id: UUID
     let type: QuestionType
     let difficulty: QuestionDifficulty
     let category: QuestionCategory
     let question: String
     let answers: [AnswerEntity]
+
+    init(
+        id: UUID = .init(),
+        type: QuestionType,
+        difficulty: QuestionDifficulty,
+        category: QuestionCategory,
+        question: String,
+        answers: [AnswerEntity]
+    ) {
+        self.id = id
+        self.type = type
+        self.difficulty = difficulty
+        self.category = category
+        self.question = question
+        self.answers = answers
+    }
 }
 
 extension QuestionEntity: DTODecodable {
