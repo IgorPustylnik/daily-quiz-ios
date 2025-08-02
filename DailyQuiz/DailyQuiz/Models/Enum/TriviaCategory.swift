@@ -1,5 +1,5 @@
 //
-//  QuestionCategory.swift
+//  TriviaCategory.swift
 //  DailyQuiz
 //
 //  Created by Игорь Пустыльник on 01.08.2025.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum QuestionCategory: String, Decodable {
+enum TriviaCategory: String, Decodable {
     case generalKnowledge = "General Knowledge"
     case entertainmentBooks = "Entertainment: Books"
     case entertainmentFilm = "Entertainment: Film"
@@ -32,4 +32,6 @@ enum QuestionCategory: String, Decodable {
     case scienceGadgets = "Science: Gadgets"
     case entertainmentJapaneseAnimeManga = "Entertainment: Japanese Anime & Manga"
     case entertainmentCartoonAnimations = "Entertainment: Cartoon & Animations"
+
+    case unknown
 }

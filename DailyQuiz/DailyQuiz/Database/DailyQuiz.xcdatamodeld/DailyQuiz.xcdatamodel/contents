@@ -10,13 +10,7 @@
     <entity name="AnswerSelectionCD" representedClassName="AnswerSelectionCD" syncable="YES">
         <attribute name="isSelected" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="answer" maxCount="1" deletionRule="Nullify" destinationEntity="AnswerCD" inverseName="selections" inverseEntity="AnswerCD"/>
-        <relationship name="completedQuiz" maxCount="1" deletionRule="Nullify" destinationEntity="CompletedQuizCD" inverseName="answersSelection" inverseEntity="CompletedQuizCD"/>
-    </entity>
-    <entity name="CompletedQuizCD" representedClassName="CompletedQuizCD" syncable="YES">
-        <attribute name="completedAt" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <relationship name="answersSelection" toMany="YES" deletionRule="Cascade" destinationEntity="AnswerSelectionCD" inverseName="completedQuiz" inverseEntity="AnswerSelectionCD"/>
-        <relationship name="originalQuiz" maxCount="1" deletionRule="Cascade" destinationEntity="QuizCD" inverseName="completedQuizzez" inverseEntity="QuizCD"/>
+        <relationship name="quizResult" maxCount="1" deletionRule="Nullify" destinationEntity="QuizResultCD" inverseName="answersSelection" inverseEntity="QuizResultCD"/>
     </entity>
     <entity name="QuestionCD" representedClassName="QuestionCD" syncable="YES">
         <attribute name="category" attributeType="String"/>
@@ -28,8 +22,16 @@
         <relationship name="quiz" maxCount="1" deletionRule="Nullify" destinationEntity="QuizCD" inverseName="questions" inverseEntity="QuizCD"/>
     </entity>
     <entity name="QuizCD" representedClassName="QuizCD" syncable="YES">
+        <attribute name="category" attributeType="String"/>
+        <attribute name="difficulty" attributeType="String"/>
         <attribute name="name" attributeType="String"/>
-        <relationship name="completedQuizzez" maxCount="1" deletionRule="Cascade" destinationEntity="CompletedQuizCD" inverseName="originalQuiz" inverseEntity="CompletedQuizCD"/>
         <relationship name="questions" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="QuestionCD" inverseName="quiz" inverseEntity="QuestionCD"/>
+        <relationship name="quizResults" maxCount="1" deletionRule="Cascade" destinationEntity="QuizResultCD" inverseName="originalQuiz" inverseEntity="QuizResultCD"/>
+    </entity>
+    <entity name="QuizResultCD" representedClassName="QuizResultCD" syncable="YES">
+        <attribute name="completedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="answersSelection" toMany="YES" deletionRule="Cascade" destinationEntity="AnswerSelectionCD" inverseName="quizResult" inverseEntity="AnswerSelectionCD"/>
+        <relationship name="originalQuiz" maxCount="1" deletionRule="Cascade" destinationEntity="QuizCD" inverseName="quizResults" inverseEntity="QuizCD"/>
     </entity>
 </model>

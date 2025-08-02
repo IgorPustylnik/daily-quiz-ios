@@ -9,8 +9,8 @@ import Foundation
 
 struct QuestionEntry: Decodable {
     let type: QuestionType
-    let difficulty: QuestionDifficulty
-    let category: QuestionCategory
+    let difficulty: TriviaDifficulty
+    let category: TriviaCategory
     let question: String
     let correctAnswer: String
     let incorrectAnswers: [String]

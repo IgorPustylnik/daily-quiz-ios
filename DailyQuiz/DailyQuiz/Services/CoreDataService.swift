@@ -22,21 +22,21 @@ final class CoreDataService: PersistentStorage {
 
     // MARK: - Public Methods
 
-    func getAllCompletedQuizzes() -> [CompletedQuizEntity] {
-        let request: NSFetchRequest<CompletedQuizCD> = CompletedQuizCD.fetchRequest()
+    func getAllQuizResults() -> [QuizResultEntity] {
+        let request: NSFetchRequest<QuizResultCD> = QuizResultCD.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "completedAt", ascending: false)]
 
         guard let results = try? context.fetch(request) else { return [] }
 
-        return results.compactMap { completedQuizCD in
-            completedQuizCD.convertToCompletedQuizEntity()
+        return results.compactMap { quizResultCD in
+            quizResultCD.convertToQuizResultEntity()
         }
     }
 
-    func deleteCompletedQuizzes(_ quizzes: [CompletedQuizEntity]) {
-        let ids = quizzes.map { $0.id }
+    func deleteQuizResults(_ results: [QuizResultEntity]) {
+        let ids = results.map { $0.id }
 
-        let request: NSFetchRequest<CompletedQuizCD> = CompletedQuizCD.fetchRequest()
+        let request: NSFetchRequest<QuizResultCD> = QuizResultCD.fetchRequest()
         request.predicate = NSPredicate(format: "id in %@", ids)
 
         guard let results = try? context.fetch(request) else { return }
@@ -46,13 +46,13 @@ final class CoreDataService: PersistentStorage {
         try? context.save()
     }
 
-    func saveCompletedQuiz(_ quiz: CompletedQuizEntity) {
-        let completedQuizCD = CompletedQuizCD(context: context)
-        completedQuizCD.id = quiz.id
-        completedQuizCD.completedAt = quiz.completedAt
+    func saveQuizResult(_ quizResult: QuizResultEntity) {
+        let quizResultCD = QuizResultCD(context: context)
+        quizResultCD.id = quizResult.id
+        quizResultCD.completedAt = quizResult.completedAt
 
         let quizCD = QuizCD(context: context)
-        for question in quiz.originalQuiz.questions {
+        for question in quizResult.originalQuiz.questions {
             let questionCD = QuestionCD(context: context)
             questionCD.id = question.id
             questionCD.question = question.question
@@ -67,21 +67,28 @@ final class CoreDataService: PersistentStorage {
                 answerCD.isCorrect = answer.isCorrect
                 questionCD.addToAnswers(answerCD)
 
-                if let selected = quiz.answersSelection[answer] {
+                if let selected = quizResult.answersSelection[answer] {
                     let selectionCD = AnswerSelectionCD(context: context)
                     selectionCD.answer = answerCD
                     selectionCD.isSelected = selected
-                    selectionCD.completedQuiz = completedQuizCD
+                    selectionCD.quizResult = quizResultCD
                 }
             }
 
+            quizCD.name = quizResult.originalQuiz.name
+            quizCD.difficulty = quizResult.originalQuiz.difficulty.rawValue
+            quizCD.category = quizResult.originalQuiz.category.rawValue
             quizCD.addToQuestions(questionCD)
             questionCD.quiz = quizCD
         }
 
-        completedQuizCD.originalQuiz = quizCD
+        quizResultCD.originalQuiz = quizCD
 
-        try? context.save()
+        do {
+            try context.save()
+        } catch {
+            print(error)
+        }
     }
 
 }

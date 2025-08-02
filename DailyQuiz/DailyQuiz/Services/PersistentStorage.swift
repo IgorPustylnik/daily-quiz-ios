@@ -8,7 +8,7 @@
 import Foundation
 
 protocol PersistentStorage {
-    func getAllCompletedQuizzes() -> [CompletedQuizEntity]
-    func saveCompletedQuiz(_ quiz: CompletedQuizEntity)
-    func deleteCompletedQuizzes(_ quizzes: [CompletedQuizEntity])
+    func getAllQuizResults() -> [QuizResultEntity]
+    func saveQuizResult(_ quiz: QuizResultEntity)
+    func deleteQuizResults(_ quizzes: [QuizResultEntity])
 }

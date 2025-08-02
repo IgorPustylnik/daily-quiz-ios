@@ -36,8 +36,8 @@ struct RootView: View {
                     persistentStorage: persistentStorage,
                     namespace: transitionNamespace
                 )
-            case .quizResults(let completedQuiz, let isBrief):
-                QuizResultsAssembly().build(router: router, completedQuiz: completedQuiz, isBrief: isBrief)
+            case .quizResults(let quizResult, let isBrief):
+                QuizResultsAssembly().build(router: router, quizResult: quizResult, isBrief: isBrief)
             }
         }
         .animation(.spring(), value: router.path)

@@ -10,16 +10,16 @@ import Foundation
 struct QuestionEntity: Identifiable, Hashable {
     let id: UUID
     let type: QuestionType
-    let difficulty: QuestionDifficulty
-    let category: QuestionCategory
+    let difficulty: TriviaDifficulty
+    let category: TriviaCategory
     let question: String
     let answers: [AnswerEntity]
 
     init(
         id: UUID = .init(),
         type: QuestionType,
-        difficulty: QuestionDifficulty,
-        category: QuestionCategory,
+        difficulty: TriviaDifficulty,
+        category: TriviaCategory,
         question: String,
         answers: [AnswerEntity]
     ) {
