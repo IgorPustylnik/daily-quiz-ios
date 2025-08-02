@@ -29,6 +29,8 @@ struct RootView: View {
                 HomeAssembly().build(router: router, namespace: transitionNamespace)
             case .quiz(let quiz):
                 QuizAssembly().build(router: router, quiz: quiz, namespace: transitionNamespace)
+            case .quizResults(let completedQuiz, let isBrief):
+                QuizResultsAssembly().build(router: router, completedQuiz: completedQuiz, isBrief: isBrief)
             }
         }
         .animation(.spring(), value: router.path)

@@ -84,7 +84,7 @@ final class QuizViewModel: ObservableObject {
                 answersSelection: answersSelection
             )
             // TODO: Save to persistent store
-            router.showQuizResults(completedQuiz)
+            router.showQuizResults(completedQuiz, isShownAfterTaking: true)
         } else if isSubmittable {
             currentQuestionIndex += 1
         }
