@@ -8,7 +8,13 @@
 import Foundation
 
 struct AnswerEntity: Identifiable, Hashable {
-    let id: UUID = .init()
+    let id: UUID
     let text: String
     let isCorrect: Bool
+
+    init(id: UUID = UUID(), text: String, isCorrect: Bool) {
+        self.id = id
+        self.text = text
+        self.isCorrect = isCorrect
+    }
 }

@@ -8,69 +8,66 @@
 import Foundation
 
 final class TriviaGeneratorMockService: TriviaGeneratorService {
-    
-    // MARK: - Singleton
 
     static let shared = TriviaGeneratorMockService()
-
     private init() {}
 
-    // MARK: - Public Methods
-
     func generateQuiz() async throws -> QuizEntity {
-        try? await Task.sleep(nanoseconds: 1_000_000_000)
-
         return .init(
+            name: "Викторина от \(Date.now.formatted(.dateTime))",
             questions: [
                 .init(
                     type: .boolean,
                     difficulty: .easy,
-                    category: .animals,
-                    question: "Q 1",
+                    category: .scienceNature,
+                    question: "Правда ли, что у человека больше костей, чем у акулы?",
                     answers: [
-                        .init(text: "True", isCorrect: true),
-                        .init(text: "False", isCorrect: false),
+                        .init(text: "Да", isCorrect: true),
+                        .init(text: "Нет", isCorrect: false)
+                    ]
+                ),
+                .init(
+                    type: .multiple,
+                    difficulty: .medium,
+                    category: .history,
+                    question: "Кто из этих личностей НЕ был императором?",
+                    answers: [
+                        .init(text: "Юлий Цезарь", isCorrect: true),
+                        .init(text: "Наполеон Бонапарт", isCorrect: false),
+                        .init(text: "Цинь Шихуанди", isCorrect: false),
+                        .init(text: "Август", isCorrect: false)
+                    ]
+                ),
+                .init(
+                    type: .boolean,
+                    difficulty: .easy,
+                    category: .scienceComputers,
+                    question: "Правда ли, что первые компьютеры занимали целые комнаты?",
+                    answers: [
+                        .init(text: "Да", isCorrect: true),
+                        .init(text: "Нет", isCorrect: false)
                     ]
                 ),
                 .init(
                     type: .multiple,
                     difficulty: .easy,
-                    category: .animals,
-                    question: "Q 2",
+                    category: .entertainmentFilm,
+                    question: "Какой из этих фильмов снят Кристофером Ноланом?",
                     answers: [
-                        .init(text: "??? 1", isCorrect: true),
-                        .init(text: "??? 2", isCorrect: false),
-                        .init(text: "??? 3", isCorrect: false)
+                        .init(text: "Начало", isCorrect: true),
+                        .init(text: "Титаник", isCorrect: false),
+                        .init(text: "Матрица", isCorrect: false),
+                        .init(text: "Форсаж 5", isCorrect: false)
                     ]
                 ),
                 .init(
                     type: .boolean,
                     difficulty: .easy,
                     category: .animals,
-                    question: "Q 3",
+                    question: "Коты чаще левши, чем правши?",
                     answers: [
-                        .init(text: "True", isCorrect: true),
-                        .init(text: "False", isCorrect: false)
-                    ]
-                ),
-                .init(
-                    type: .boolean,
-                    difficulty: .easy,
-                    category: .animals,
-                    question: "Q 4",
-                    answers: [
-                        .init(text: "True", isCorrect: true),
-                        .init(text: "False", isCorrect: false)
-                    ]
-                ),
-                .init(
-                    type: .boolean,
-                    difficulty: .easy,
-                    category: .animals,
-                    question: "Q 5",
-                    answers: [
-                        .init(text: "True", isCorrect: true),
-                        .init(text: "False", isCorrect: false)
+                        .init(text: "Да", isCorrect: true),
+                        .init(text: "Нет", isCorrect: false)
                     ]
                 )
             ]

@@ -12,6 +12,7 @@ final class QuizViewModel: ObservableObject {
     // MARK: - Private Properties
 
     private let router: Router
+    private let persistentStorage: PersistentStorage
 
     @Published
     private var currentQuestionIndex: Int = 0
@@ -52,9 +53,10 @@ final class QuizViewModel: ObservableObject {
 
     // MARK: - Init
 
-    init(router: Router, quiz: QuizEntity) {
+    init(router: Router, quiz: QuizEntity, persistentStorage: PersistentStorage) {
         self.router = router
         self.quiz = quiz
+        self.persistentStorage = persistentStorage
     }
 
     // MARK: - Public Methods
@@ -78,12 +80,11 @@ final class QuizViewModel: ObservableObject {
     func submit() {
         if isSubmittable && currentQuestionIndex == quiz.questions.count - 1 {
             let completedQuiz: CompletedQuizEntity = .init(
-                name: "Quiz 1",
                 completedAt: .now,
                 originalQuiz: quiz,
                 answersSelection: answersSelection
             )
-            // TODO: Save to persistent store
+            persistentStorage.saveCompletedQuiz(completedQuiz)
             router.showQuizResults(completedQuiz, isShownAfterTaking: true)
         } else if isSubmittable {
             currentQuestionIndex += 1
