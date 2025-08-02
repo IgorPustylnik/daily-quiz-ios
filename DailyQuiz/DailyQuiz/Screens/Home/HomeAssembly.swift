@@ -9,7 +9,8 @@ import Foundation
 
 final class HomeAssembly {
     func build(router: Router) -> HomeView {
-        let viewModel = HomeViewModel(router: router)
+        let triviaGenerator = TriviaGeneratorMockService.shared
+        let viewModel = HomeViewModel(router: router, triviaGenerator: triviaGenerator)
         return HomeView(viewModel: viewModel)
     }
 }

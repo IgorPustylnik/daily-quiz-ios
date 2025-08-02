@@ -32,11 +32,24 @@ struct HomeView: View {
             history
                 .frame(maxHeight: .infinity, alignment: .top)
                 .padding(.top, Constants.historyButtonYOffset)
+                .opacity(viewModel.isLoading ? 0 : 1)
 
             VStack(spacing: Constants.mainVStackSpacing) {
                 Image(.logo)
-                greeting
+                Group {
+                    greeting
+                    if let errorMessage = viewModel.errorMessage {
+                        Text(errorMessage)
+                    }
+                }
+                .opacity(viewModel.isLoading ? 0 : 1)
             }
+
+            ProgressView()
+                .progressViewStyle(.circular)
+                .scaleEffect(.init(width: 3, height: 3))
+                .tint(.white)
+                .opacity(viewModel.isLoading ? 1 : 0)
         }
     }
 
@@ -46,7 +59,7 @@ struct HomeView: View {
         VStack {
             Button(
                 action: {
-                    
+
                 },
                 label: {
                     HStack(spacing: Constants.historyButtonHStackSpacing) {
@@ -74,7 +87,7 @@ struct HomeView: View {
                 .multilineTextAlignment(.center)
                 .fontWeight(.bold)
             Button {
-
+                viewModel.start()
             } label: {
                 Text("Начать викторину".uppercased())
             }
