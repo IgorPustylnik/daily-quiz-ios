@@ -29,7 +29,6 @@
 		550DAF302E3D00DA00EC2033 /* QuizViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF2F2E3D00DA00EC2033 /* QuizViewModel.swift */; };
 		550DAF322E3D00E000EC2033 /* QuizView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF312E3D00E000EC2033 /* QuizView.swift */; };
 		550DAF3F2E3D07F700EC2033 /* AnswerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF3E2E3D07F600EC2033 /* AnswerEntity.swift */; };
-		550DAF412E3D0CE400EC2033 /* CompletedQuestionEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF402E3D0CE300EC2033 /* CompletedQuestionEntity.swift */; };
 		550DAF432E3D0D0800EC2033 /* CompletedQuizEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF422E3D0D0800EC2033 /* CompletedQuizEntity.swift */; };
 		550DAF452E3D138100EC2033 /* RadioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF442E3D138100EC2033 /* RadioView.swift */; };
 		550DAF472E3D13AE00EC2033 /* RadioStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF462E3D13AE00EC2033 /* RadioStatus.swift */; };
@@ -37,11 +36,9 @@
 		550DAF4C2E3E054900EC2033 /* TriviaGeneratorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF4B2E3E054900EC2033 /* TriviaGeneratorService.swift */; };
 		550DAF502E3E05ED00EC2033 /* TriviaGeneratorMockService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF4F2E3E05ED00EC2033 /* TriviaGeneratorMockService.swift */; };
 		550DAF552E3E14E400EC2033 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF542E3E14E400EC2033 /* Strings.swift */; };
-		550DAF592E3E19DA00EC2033 /* QuestionDemoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF582E3E19DA00EC2033 /* QuestionDemoView.swift */; };
 		550DAF5C2E3E1A8B00EC2033 /* QuizResultsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF5B2E3E1A8B00EC2033 /* QuizResultsAssembly.swift */; };
 		550DAF5E2E3E1A9300EC2033 /* QuizResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF5D2E3E1A9300EC2033 /* QuizResultsViewModel.swift */; };
 		550DAF602E3E1A9B00EC2033 /* QuizResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF5F2E3E1A9B00EC2033 /* QuizResultsView.swift */; };
-		550DAF622E3E1E5500EC2033 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAF612E3E1E5500EC2033 /* QuestionView.swift */; };
 		5571DDE02E3CBB6C00EDB4AA /* DailyQuizApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5571DDDF2E3CBB6C00EDB4AA /* DailyQuizApp.swift */; };
 		5571DDE22E3CBB6C00EDB4AA /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5571DDE12E3CBB6C00EDB4AA /* RootView.swift */; };
 		5571DDE42E3CBB6F00EDB4AA /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5571DDE32E3CBB6F00EDB4AA /* Colors.xcassets */; };
@@ -71,7 +68,6 @@
 		550DAF2F2E3D00DA00EC2033 /* QuizViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizViewModel.swift; sourceTree = "<group>"; };
 		550DAF312E3D00E000EC2033 /* QuizView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizView.swift; sourceTree = "<group>"; };
 		550DAF3E2E3D07F600EC2033 /* AnswerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerEntity.swift; sourceTree = "<group>"; };
-		550DAF402E3D0CE300EC2033 /* CompletedQuestionEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedQuestionEntity.swift; sourceTree = "<group>"; };
 		550DAF422E3D0D0800EC2033 /* CompletedQuizEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompletedQuizEntity.swift; sourceTree = "<group>"; };
 		550DAF442E3D138100EC2033 /* RadioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioView.swift; sourceTree = "<group>"; };
 		550DAF462E3D13AE00EC2033 /* RadioStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioStatus.swift; sourceTree = "<group>"; };
@@ -79,11 +75,9 @@
 		550DAF4B2E3E054900EC2033 /* TriviaGeneratorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaGeneratorService.swift; sourceTree = "<group>"; };
 		550DAF4F2E3E05ED00EC2033 /* TriviaGeneratorMockService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TriviaGeneratorMockService.swift; sourceTree = "<group>"; };
 		550DAF542E3E14E400EC2033 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
-		550DAF582E3E19DA00EC2033 /* QuestionDemoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionDemoView.swift; sourceTree = "<group>"; };
 		550DAF5B2E3E1A8B00EC2033 /* QuizResultsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultsAssembly.swift; sourceTree = "<group>"; };
 		550DAF5D2E3E1A9300EC2033 /* QuizResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultsViewModel.swift; sourceTree = "<group>"; };
 		550DAF5F2E3E1A9B00EC2033 /* QuizResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizResultsView.swift; sourceTree = "<group>"; };
-		550DAF612E3E1E5500EC2033 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		5571DDDC2E3CBB6C00EDB4AA /* DailyQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DailyQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5571DDDF2E3CBB6C00EDB4AA /* DailyQuizApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyQuizApp.swift; sourceTree = "<group>"; };
 		5571DDE12E3CBB6C00EDB4AA /* RootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
@@ -148,7 +142,6 @@
 				550DAF3E2E3D07F600EC2033 /* AnswerEntity.swift */,
 				550DAF182E3CFB6400EC2033 /* QuestionEntity.swift */,
 				550DAF272E3CFC1200EC2033 /* QuizEntity.swift */,
-				550DAF402E3D0CE300EC2033 /* CompletedQuestionEntity.swift */,
 				550DAF422E3D0D0800EC2033 /* CompletedQuizEntity.swift */,
 			);
 			path = Entity;
@@ -252,7 +245,6 @@
 				550DAF2F2E3D00DA00EC2033 /* QuizViewModel.swift */,
 				550DAF312E3D00E000EC2033 /* QuizView.swift */,
 				550DAF482E3D185300EC2033 /* AnswerView.swift */,
-				550DAF582E3E19DA00EC2033 /* QuestionDemoView.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -295,7 +287,6 @@
 				550DAF5B2E3E1A8B00EC2033 /* QuizResultsAssembly.swift */,
 				550DAF5D2E3E1A9300EC2033 /* QuizResultsViewModel.swift */,
 				550DAF5F2E3E1A9B00EC2033 /* QuizResultsView.swift */,
-				550DAF612E3E1E5500EC2033 /* QuestionView.swift */,
 			);
 			path = QuizResults;
 			sourceTree = "<group>";
@@ -447,14 +438,11 @@
 				550DAF1C2E3CFB8E00EC2033 /* RawMappable.swift in Sources */,
 				550DAF472E3D13AE00EC2033 /* RadioStatus.swift in Sources */,
 				550DAF3F2E3D07F700EC2033 /* AnswerEntity.swift in Sources */,
-				550DAF622E3E1E5500EC2033 /* QuestionView.swift in Sources */,
 				550DAF222E3CFBC600EC2033 /* QuestionType.swift in Sources */,
 				550DAF302E3D00DA00EC2033 /* QuizViewModel.swift in Sources */,
 				550DAF5E2E3E1A9300EC2033 /* QuizResultsViewModel.swift in Sources */,
-				550DAF592E3E19DA00EC2033 /* QuestionDemoView.swift in Sources */,
 				550DAF102E3CE84F00EC2033 /* DQContainerStyle.swift in Sources */,
 				550DAF1E2E3CFB9800EC2033 /* DTOConvertible.swift in Sources */,
-				550DAF412E3D0CE400EC2033 /* CompletedQuestionEntity.swift in Sources */,
 				550DAF602E3E1A9B00EC2033 /* QuizResultsView.swift in Sources */,
 				550DAF502E3E05ED00EC2033 /* TriviaGeneratorMockService.swift in Sources */,
 				550DAEF12E3CBD5C00EC2033 /* Route.swift in Sources */,

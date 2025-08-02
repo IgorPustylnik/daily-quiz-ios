@@ -25,6 +25,8 @@ struct HomeView: View {
     @ObservedObject
     var viewModel: HomeViewModel
 
+    let namespace: Namespace.ID
+
     // MARK: - Body
 
     var body: some View {
@@ -36,6 +38,10 @@ struct HomeView: View {
 
             VStack(spacing: Constants.mainVStackSpacing) {
                 Image(.logo)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 300)
+                    .matchedGeometryEffect(id: "logo", in: namespace)
                 Group {
                     greeting
                     if let errorMessage = viewModel.errorMessage {

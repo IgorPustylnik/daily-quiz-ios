@@ -14,6 +14,9 @@ struct RootView: View {
     @ObservedObject
     private var router = Router.shared
 
+    @Namespace
+    private var transitionNamespace
+
     // MARK: - Body
 
     var body: some View {
@@ -23,10 +26,12 @@ struct RootView: View {
 
             switch router.path.last {
             case .none:
-                HomeAssembly().build(router: router)
+                HomeAssembly().build(router: router, namespace: transitionNamespace)
             case .quiz(let quiz):
+                QuizAssembly().build(router: router, quiz: quiz, namespace: transitionNamespace)
             }
         }
+        .animation(.spring(), value: router.path)
         .environment(\.colorScheme, .light)
     }
 }
