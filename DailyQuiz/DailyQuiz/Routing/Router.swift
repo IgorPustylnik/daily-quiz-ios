@@ -7,6 +7,21 @@
 
 import Foundation
 
-enum Route: Hashable {
-    case home
+final class Router: ObservableObject {
+    static let shared = Router()
+
+    @Published
+    var path: [Route] = []
+
+    func startQuiz(_ quiz: QuizEntity) {
+        path.append(.quiz(quiz))
+    }
+
+    func backToRoot() {
+        path.removeAll()
+    }
+
+    func back() {
+        path.removeLast()
+    }
 }
