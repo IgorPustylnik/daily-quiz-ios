@@ -1,5 +1,5 @@
 //
-//  CompletedQuizCD+CoreDataProperties.swift
+//  QuizResultCD+CoreDataProperties.swift
 //  DailyQuiz
 //
 //  Created by Игорь Пустыльник on 02.08.2025.
@@ -9,10 +9,10 @@
 import Foundation
 import CoreData
 
-extension CompletedQuizCD {
+extension QuizResultCD {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<CompletedQuizCD> {
-        return NSFetchRequest<CompletedQuizCD>(entityName: "CompletedQuizCD")
+    @nonobjc public class func fetchRequest() -> NSFetchRequest<QuizResultCD> {
+        return NSFetchRequest<QuizResultCD>(entityName: "QuizResultCD")
     }
 
     @NSManaged public var id: UUID
@@ -23,7 +23,7 @@ extension CompletedQuizCD {
 }
 
 // MARK: Generated accessors for answersSelection
-extension CompletedQuizCD {
+extension QuizResultCD {
 
     @objc(addAnswersSelectionObject:)
     @NSManaged public func addToAnswersSelection(_ value: AnswerSelectionCD)
@@ -39,12 +39,12 @@ extension CompletedQuizCD {
 
 }
 
-extension CompletedQuizCD: Identifiable {
+extension QuizResultCD: Identifiable {
 
 }
 
-extension CompletedQuizCD {
-    func convertToCompletedQuizEntity() -> CompletedQuizEntity {
+extension QuizResultCD {
+    func convertToQuizResultEntity() -> QuizResultEntity {
         let questionsCD = (originalQuiz.questions.array as? [QuestionCD]) ?? []
 
         let questions: [QuestionEntity] = questionsCD.compactMap { question in
@@ -55,8 +55,8 @@ extension CompletedQuizCD {
             }
 
             guard let type = QuestionType(rawValue: question.type),
-                  let difficulty = QuestionDifficulty(rawValue: question.difficulty),
-                  let category = QuestionCategory(rawValue: question.category)
+                  let difficulty = TriviaDifficulty(rawValue: question.difficulty),
+                  let category = TriviaCategory(rawValue: question.category)
             else {
                 return nil
             }
@@ -71,7 +71,12 @@ extension CompletedQuizCD {
             )
         }
 
-        let quiz = QuizEntity(name: originalQuiz.name, questions: questions)
+        let quiz = QuizEntity(
+            name: originalQuiz.name,
+            difficulty: .init(rawValue: originalQuiz.difficulty) ?? .unknown,
+            category: .init(rawValue: originalQuiz.category) ?? .unknown,
+            questions: questions
+        )
 
         var selection: [AnswerEntity: Bool] = [:]
         if let rawSelections = self.answersSelection as? Set<AnswerSelectionCD> {
@@ -82,7 +87,7 @@ extension CompletedQuizCD {
             }
         }
 
-        return CompletedQuizEntity(
+        return QuizResultEntity(
             id: self.id,
             completedAt: self.completedAt,
             originalQuiz: quiz,

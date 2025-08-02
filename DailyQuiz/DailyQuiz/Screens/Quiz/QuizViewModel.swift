@@ -61,7 +61,7 @@ final class QuizViewModel: ObservableObject {
 
     // MARK: - Public Methods
 
-    func cancel() {
+    func back() {
         router.back()
     }
 
@@ -79,13 +79,13 @@ final class QuizViewModel: ObservableObject {
 
     func submit() {
         if isSubmittable && currentQuestionIndex == quiz.questions.count - 1 {
-            let completedQuiz: CompletedQuizEntity = .init(
+            let quizResult: QuizResultEntity = .init(
                 completedAt: .now,
                 originalQuiz: quiz,
                 answersSelection: answersSelection
             )
-            persistentStorage.saveCompletedQuiz(completedQuiz)
-            router.showQuizResults(completedQuiz, isShownAfterTaking: true)
+            persistentStorage.saveQuizResult(quizResult)
+            router.showQuizResults(quizResult, isShownAfterTaking: true)
         } else if isSubmittable {
             currentQuestionIndex += 1
         }

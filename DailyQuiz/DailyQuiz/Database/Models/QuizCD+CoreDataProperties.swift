@@ -16,6 +16,8 @@ extension QuizCD {
     }
 
     @NSManaged public var name: String
+    @NSManaged public var difficulty: String
+    @NSManaged public var category: String
     @NSManaged public var questions: NSOrderedSet
 
 }

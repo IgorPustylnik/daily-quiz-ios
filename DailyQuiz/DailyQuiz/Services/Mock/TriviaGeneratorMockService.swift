@@ -14,7 +14,9 @@ final class TriviaGeneratorMockService: TriviaGeneratorService {
 
     func generateQuiz() async throws -> QuizEntity {
         return .init(
-            name: "Викторина от \(Date.now.formatted(.dateTime))",
+            name: "Quiz \(Int.random(in: 1...100))",
+            difficulty: .easy,
+            category: .animals,
             questions: [
                 .init(
                     type: .boolean,

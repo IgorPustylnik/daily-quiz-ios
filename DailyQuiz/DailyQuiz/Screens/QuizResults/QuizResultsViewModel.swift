@@ -15,14 +15,14 @@ final class QuizResultsViewModel: ObservableObject {
 
     // MARK: - Public Properties
 
-    let completedQuiz: CompletedQuizEntity
+    let quizResult: QuizResultEntity
     let isBrief: Bool
 
     // MARK: - Init
 
-    init(router: Router, completedQuiz: CompletedQuizEntity, isBrief: Bool) {
+    init(router: Router, quizResult: QuizResultEntity, isBrief: Bool) {
         self.router = router
-        self.completedQuiz = completedQuiz
+        self.quizResult = quizResult
         self.isBrief = isBrief
     }
 
@@ -30,7 +30,7 @@ final class QuizResultsViewModel: ObservableObject {
 
     func questionStatus(_ question: QuestionEntity) -> RadioStatus {
         let correctAnswers = question.answers.filter { $0.isCorrect }
-        let selectedAnswers = question.answers.filter { completedQuiz.answersSelection[$0] == true }
+        let selectedAnswers = question.answers.filter { quizResult.answersSelection[$0] == true }
 
         let allCorrectSelected = Set(correctAnswers) == Set(selectedAnswers)
         let hasWrongSelected = selectedAnswers.contains { !$0.isCorrect }
@@ -39,7 +39,7 @@ final class QuizResultsViewModel: ObservableObject {
     }
 
     func answerStatus(_ answer: AnswerEntity) -> RadioStatus {
-        let isSelected: Bool = completedQuiz.answersSelection[answer] ?? false
+        let isSelected: Bool = quizResult.answersSelection[answer] ?? false
         switch (isSelected, answer.isCorrect) {
         case (true, true): return .correct
         case (true, false): return .wrong

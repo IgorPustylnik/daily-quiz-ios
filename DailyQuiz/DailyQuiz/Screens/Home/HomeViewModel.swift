@@ -42,9 +42,13 @@ final class HomeViewModel: ObservableObject {
                 let quiz = try await triviaGenerator.generateQuiz()
                 router.startQuiz(quiz)
             } catch {
-                errorMessage = error.localizedDescription
+                errorMessage = "Ошибка! Попробуйте ещё раз"
             }
         }
+    }
+
+    func showHistory() {
+        router.showHistory()
     }
 
 }

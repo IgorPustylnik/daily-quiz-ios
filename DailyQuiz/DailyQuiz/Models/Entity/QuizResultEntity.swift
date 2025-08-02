@@ -1,5 +1,5 @@
 //
-//  CompletedQuizEntity.swift
+//  QuizResultEntity.swift
 //  DailyQuiz
 //
 //  Created by Игорь Пустыльник on 01.08.2025.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CompletedQuizEntity: Hashable {
+struct QuizResultEntity: Identifiable, Hashable {
     let id: UUID
     let completedAt: Date
     let originalQuiz: QuizEntity
@@ -20,8 +20,8 @@ struct CompletedQuizEntity: Hashable {
         self.answersSelection = answersSelection
     }
 
-    var score: Int {
-        originalQuiz.questions.reduce(0) { count, question in
+    var score: Score {
+        let correctCount = originalQuiz.questions.reduce(0) { count, question in
             let isCorrect = question.answers.allSatisfy { answer in
                 let isCorrectAndSelected = answer.isCorrect && answersSelection[answer] ?? false
                 let isWrongAndUnselected = !answer.isCorrect && !(answersSelection[answer] ?? false)
@@ -29,6 +29,8 @@ struct CompletedQuizEntity: Hashable {
             }
             return count + (isCorrect ? 1 : 0)
         }
+
+        return Score.normalized(from: correctCount, totalQuestions: originalQuiz.questions.count)
     }
 
     var questionCount: Int {

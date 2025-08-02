@@ -9,5 +9,6 @@ import Foundation
 
 enum Route: Hashable {
     case quiz(QuizEntity)
-    case quizResults(CompletedQuizEntity, isBrief: Bool)
+    case quizResults(QuizResultEntity, isBrief: Bool)
+    case history
 }

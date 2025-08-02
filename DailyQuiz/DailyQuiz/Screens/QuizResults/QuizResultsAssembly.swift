@@ -8,8 +8,8 @@
 import Foundation
 
 final class QuizResultsAssembly {
-    func build(router: Router, completedQuiz: CompletedQuizEntity, isBrief: Bool) -> QuizResultsView {
-        let viewModel = QuizResultsViewModel(router: router, completedQuiz: completedQuiz, isBrief: isBrief)
+    func build(router: Router, quizResult: QuizResultEntity, isBrief: Bool) -> QuizResultsView {
+        let viewModel = QuizResultsViewModel(router: router, quizResult: quizResult, isBrief: isBrief)
         return QuizResultsView(viewModel: viewModel)
     }
 }

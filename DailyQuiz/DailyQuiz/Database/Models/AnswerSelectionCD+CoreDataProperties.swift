@@ -17,7 +17,7 @@ extension AnswerSelectionCD {
 
     @NSManaged public var isSelected: Bool
     @NSManaged public var answer: AnswerCD
-    @NSManaged public var completedQuiz: CompletedQuizCD
+    @NSManaged public var quizResult: QuizResultCD
 
 }
 

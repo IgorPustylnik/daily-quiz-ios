@@ -53,7 +53,7 @@ struct QuizView: View {
     private var topBar: some View {
         ZStack {
             Button {
-                viewModel.cancel()
+                viewModel.back()
             } label: {
                 Image(systemName: "chevron.left")
                     .tint(.white)
@@ -64,6 +64,7 @@ struct QuizView: View {
             Image(.logo)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
+                .foregroundStyle(.white)
                 .frame(width: Constants.logoWidth)
                 .matchedGeometryEffect(id: "logo", in: namespace)
         }
