@@ -9,10 +9,7 @@ import Foundation
 
 final class TriviaGeneratorMockService: TriviaGeneratorService {
 
-    static let shared = TriviaGeneratorMockService()
-    private init() {}
-
-    func generateQuiz() async throws -> QuizEntity {
+    func generateQuiz(preferences: QuizPreferencesEntity) async throws -> QuizEntity {
         return .init(
             name: "Quiz \(Int.random(in: 1...100))",
             difficulty: .easy,
@@ -20,8 +17,6 @@ final class TriviaGeneratorMockService: TriviaGeneratorService {
             questions: [
                 .init(
                     type: .boolean,
-                    difficulty: .easy,
-                    category: .scienceNature,
                     question: "Правда ли, что у человека больше костей, чем у акулы?",
                     answers: [
                         .init(text: "Да", isCorrect: true),
@@ -30,8 +25,6 @@ final class TriviaGeneratorMockService: TriviaGeneratorService {
                 ),
                 .init(
                     type: .multiple,
-                    difficulty: .medium,
-                    category: .history,
                     question: "Кто из этих личностей НЕ был императором?",
                     answers: [
                         .init(text: "Юлий Цезарь", isCorrect: true),
@@ -42,8 +35,6 @@ final class TriviaGeneratorMockService: TriviaGeneratorService {
                 ),
                 .init(
                     type: .boolean,
-                    difficulty: .easy,
-                    category: .scienceComputers,
                     question: "Правда ли, что первые компьютеры занимали целые комнаты?",
                     answers: [
                         .init(text: "Да", isCorrect: true),
@@ -52,8 +43,6 @@ final class TriviaGeneratorMockService: TriviaGeneratorService {
                 ),
                 .init(
                     type: .multiple,
-                    difficulty: .easy,
-                    category: .entertainmentFilm,
                     question: "Какой из этих фильмов снят Кристофером Ноланом?",
                     answers: [
                         .init(text: "Начало", isCorrect: true),
@@ -64,8 +53,6 @@ final class TriviaGeneratorMockService: TriviaGeneratorService {
                 ),
                 .init(
                     type: .boolean,
-                    difficulty: .easy,
-                    category: .animals,
                     question: "Коты чаще левши, чем правши?",
                     answers: [
                         .init(text: "Да", isCorrect: true),

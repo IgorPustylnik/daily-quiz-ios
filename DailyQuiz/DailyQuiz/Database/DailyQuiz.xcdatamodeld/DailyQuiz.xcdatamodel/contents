@@ -13,8 +13,6 @@
         <relationship name="quizResult" maxCount="1" deletionRule="Nullify" destinationEntity="QuizResultCD" inverseName="answersSelection" inverseEntity="QuizResultCD"/>
     </entity>
     <entity name="QuestionCD" representedClassName="QuestionCD" syncable="YES">
-        <attribute name="category" attributeType="String"/>
-        <attribute name="difficulty" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="question" attributeType="String"/>
         <attribute name="type" attributeType="String"/>

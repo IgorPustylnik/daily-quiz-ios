@@ -57,8 +57,6 @@ final class CoreDataService: PersistentStorage {
             questionCD.id = question.id
             questionCD.question = question.question
             questionCD.type = question.type.rawValue
-            questionCD.difficulty = question.difficulty.rawValue
-            questionCD.category = question.category.rawValue
 
             for answer in question.answers {
                 let answerCD = AnswerCD(context: context)

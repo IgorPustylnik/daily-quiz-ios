@@ -8,5 +8,5 @@
 import Foundation
 
 protocol TriviaGeneratorService {
-    func generateQuiz() async throws -> QuizEntity
+    func generateQuiz(preferences: QuizPreferencesEntity) async throws -> QuizEntity
 }

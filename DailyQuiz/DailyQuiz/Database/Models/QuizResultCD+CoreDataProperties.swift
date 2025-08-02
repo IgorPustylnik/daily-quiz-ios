@@ -54,18 +54,13 @@ extension QuizResultCD {
                 AnswerEntity(id: answer.id, text: answer.text, isCorrect: answer.isCorrect)
             }
 
-            guard let type = QuestionType(rawValue: question.type),
-                  let difficulty = TriviaDifficulty(rawValue: question.difficulty),
-                  let category = TriviaCategory(rawValue: question.category)
-            else {
+            guard let type = QuestionType(rawValue: question.type) else {
                 return nil
             }
 
             return QuestionEntity(
                 id: question.id,
                 type: type,
-                difficulty: difficulty,
-                category: category,
                 question: question.question,
                 answers: answers
             )
