@@ -61,6 +61,7 @@
 		55D59B572E3E7677008AD86C /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D59B562E3E7677008AD86C /* HistoryView.swift */; };
 		55D59B592E3E785D008AD86C /* ResultCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D59B582E3E785D008AD86C /* ResultCardView.swift */; };
 		55D59B5B2E3E7947008AD86C /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D59B5A2E3E7947008AD86C /* Score.swift */; };
+		55D59B652E3EAF6D008AD86C /* String+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D59B642E3EAF6D008AD86C /* String+ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +120,7 @@
 		55D59B562E3E7677008AD86C /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
 		55D59B582E3E785D008AD86C /* ResultCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCardView.swift; sourceTree = "<group>"; };
 		55D59B5A2E3E7947008AD86C /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
+		55D59B642E3EAF6D008AD86C /* String+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 			children = (
 				550DAF1A2E3CFB7300EC2033 /* Network */,
 				550DAEFA2E3CBFA500EC2033 /* Helpers */,
+				55D59B662E3EAF78008AD86C /* Extensions */,
 				550DAF0C2E3CE66200EC2033 /* Styles */,
 				550DAEFD2E3CBFD500EC2033 /* ReusableLayer */,
 			);
@@ -407,6 +410,14 @@
 				55D59B582E3E785D008AD86C /* ResultCardView.swift */,
 			);
 			path = History;
+			sourceTree = "<group>";
+		};
+		55D59B662E3EAF78008AD86C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				55D59B642E3EAF6D008AD86C /* String+ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
