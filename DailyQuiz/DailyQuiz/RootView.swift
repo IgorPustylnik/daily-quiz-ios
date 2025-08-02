@@ -38,6 +38,8 @@ struct RootView: View {
                 )
             case .quizResults(let quizResult, let isBrief):
                 QuizResultsAssembly().build(router: router, quizResult: quizResult, isBrief: isBrief)
+            case .history:
+                HistoryAssembly().build(router: router, persistentStorage: persistentStorage)
             }
         }
         .animation(.spring(), value: router.path)

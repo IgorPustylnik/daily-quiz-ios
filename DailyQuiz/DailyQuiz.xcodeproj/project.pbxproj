@@ -56,6 +56,10 @@
 		55D59B4E2E3E6ABB008AD86C /* QuestionCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D59B432E3E6ABB008AD86C /* QuestionCD+CoreDataProperties.swift */; };
 		55D59B4F2E3E6ABC008AD86C /* QuizCD+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D59B442E3E6ABB008AD86C /* QuizCD+CoreDataClass.swift */; };
 		55D59B502E3E6ABC008AD86C /* QuizCD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D59B452E3E6ABB008AD86C /* QuizCD+CoreDataProperties.swift */; };
+		55D59B532E3E7669008AD86C /* HistoryAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D59B522E3E7669008AD86C /* HistoryAssembly.swift */; };
+		55D59B552E3E7671008AD86C /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D59B542E3E7671008AD86C /* HistoryViewModel.swift */; };
+		55D59B572E3E7677008AD86C /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D59B562E3E7677008AD86C /* HistoryView.swift */; };
+		55D59B592E3E785D008AD86C /* ResultCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D59B582E3E785D008AD86C /* ResultCardView.swift */; };
 		55D59B5B2E3E7947008AD86C /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55D59B5A2E3E7947008AD86C /* Score.swift */; };
 /* End PBXBuildFile section */
 
@@ -110,6 +114,10 @@
 		55D59B432E3E6ABB008AD86C /* QuestionCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QuestionCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		55D59B442E3E6ABB008AD86C /* QuizCD+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QuizCD+CoreDataClass.swift"; sourceTree = "<group>"; };
 		55D59B452E3E6ABB008AD86C /* QuizCD+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "QuizCD+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		55D59B522E3E7669008AD86C /* HistoryAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryAssembly.swift; sourceTree = "<group>"; };
+		55D59B542E3E7671008AD86C /* HistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		55D59B562E3E7677008AD86C /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		55D59B582E3E785D008AD86C /* ResultCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultCardView.swift; sourceTree = "<group>"; };
 		55D59B5A2E3E7947008AD86C /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -213,6 +221,7 @@
 				550DAF002E3CDC4E00EC2033 /* Home */,
 				550DAF132E3CF9D100EC2033 /* Quiz */,
 				550DAF5A2E3E1A7600EC2033 /* QuizResults */,
+				55D59B512E3E764F008AD86C /* History */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -389,6 +398,17 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		55D59B512E3E764F008AD86C /* History */ = {
+			isa = PBXGroup;
+			children = (
+				55D59B522E3E7669008AD86C /* HistoryAssembly.swift */,
+				55D59B542E3E7671008AD86C /* HistoryViewModel.swift */,
+				55D59B562E3E7677008AD86C /* HistoryView.swift */,
+				55D59B582E3E785D008AD86C /* ResultCardView.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -485,8 +505,11 @@
 			files = (
 				550DAF672E3E56D400EC2033 /* CoreDataStack.swift in Sources */,
 				550DAF642E3E569300EC2033 /* PersistentStorage.swift in Sources */,
+				55D59B532E3E7669008AD86C /* HistoryAssembly.swift in Sources */,
 				55D59B3B2E3E6A9B008AD86C /* CoreDataService.swift in Sources */,
 				55D59B4D2E3E6ABB008AD86C /* QuestionCD+CoreDataClass.swift in Sources */,
+				55D59B552E3E7671008AD86C /* HistoryViewModel.swift in Sources */,
+				55D59B572E3E7677008AD86C /* HistoryView.swift in Sources */,
 				550DAF452E3D138100EC2033 /* RadioView.swift in Sources */,
 				550DAF202E3CFBB800EC2033 /* QuestionEntry.swift in Sources */,
 				550DAF042E3CDC6D00EC2033 /* HomeAssembly.swift in Sources */,
@@ -512,6 +535,7 @@
 				550DAF1E2E3CFB9800EC2033 /* DTOConvertible.swift in Sources */,
 				550DAF602E3E1A9B00EC2033 /* QuizResultsView.swift in Sources */,
 				550DAF502E3E05ED00EC2033 /* TriviaGeneratorMockService.swift in Sources */,
+				55D59B592E3E785D008AD86C /* ResultCardView.swift in Sources */,
 				55D59B5B2E3E7947008AD86C /* Score.swift in Sources */,
 				550DAEF12E3CBD5C00EC2033 /* Route.swift in Sources */,
 				55D59B4E2E3E6ABB008AD86C /* QuestionCD+CoreDataProperties.swift in Sources */,

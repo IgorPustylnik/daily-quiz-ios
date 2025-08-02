@@ -68,7 +68,7 @@ struct HomeView: View {
         VStack {
             Button(
                 action: {
-
+                    viewModel.showHistory()
                 },
                 label: {
                     HStack(spacing: Constants.historyButtonHStackSpacing) {

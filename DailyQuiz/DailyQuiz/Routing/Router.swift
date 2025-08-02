@@ -20,6 +20,9 @@ final class Router: ObservableObject {
     func showQuizResults(_ quizResult: QuizResultEntity, isShownAfterTaking: Bool) {
         path.append(.quizResults(quizResult, isBrief: isShownAfterTaking))
     }
+
+    func showHistory() {
+        path.append(.history)
     }
 
     func backToRoot() {

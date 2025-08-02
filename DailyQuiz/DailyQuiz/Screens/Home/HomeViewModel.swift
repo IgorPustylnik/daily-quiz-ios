@@ -47,4 +47,8 @@ final class HomeViewModel: ObservableObject {
         }
     }
 
+    func showHistory() {
+        router.showHistory()
+    }
+
 }
