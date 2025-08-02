@@ -9,10 +9,7 @@ import Foundation
 
 final class TriviaGeneratorMockService: TriviaGeneratorService {
 
-    static let shared = TriviaGeneratorMockService()
-    private init() {}
-
-    func generateQuiz() async throws -> QuizEntity {
+    func generateQuiz(preferences: QuizPreferencesEntity) async throws -> QuizEntity {
         return .init(
             name: "Quiz \(Int.random(in: 1...100))",
             difficulty: .easy,

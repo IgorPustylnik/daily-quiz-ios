@@ -25,4 +25,14 @@ extension QuizEntity: DTODecodable {
             questions: model.results.map { try .from(dto: $0) }
         )
     }
+
+    func configure(preferences: QuizPreferencesEntity) -> Self {
+        .init(
+            name: name,
+            difficulty: preferences.difficulty ?? .unknown,
+            category: preferences.category ?? .unknown,
+            questions: questions
+        )
+    }
+
 }

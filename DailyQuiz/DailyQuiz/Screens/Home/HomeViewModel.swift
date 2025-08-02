@@ -39,7 +39,7 @@ final class HomeViewModel: ObservableObject {
             }
 
             do {
-                let quiz = try await triviaGenerator.generateQuiz()
+                let quiz = try await triviaGenerator.generateQuiz(preferences: .init())
                 router.startQuiz(quiz)
             } catch {
                 errorMessage = "Ошибка! Попробуйте ещё раз"
