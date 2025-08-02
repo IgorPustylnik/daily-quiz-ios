@@ -11,10 +11,14 @@ final class Router: ObservableObject {
     static let shared = Router()
 
     @Published
-    var path: [Route] = []
+    private(set) var path: [Route] = []
 
     func startQuiz(_ quiz: QuizEntity) {
         path.append(.quiz(quiz))
+    }
+
+    func showQuizResults(_ completedQuiz: CompletedQuizEntity, isShownAfterTaking: Bool) {
+        path.append(.quizResults(completedQuiz, isBrief: isShownAfterTaking))
     }
 
     func backToRoot() {
