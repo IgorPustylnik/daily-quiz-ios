@@ -40,12 +40,15 @@ struct HomeView: View {
                 Image(.logo)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
+                    .foregroundStyle(.white)
                     .frame(width: 300)
                     .matchedGeometryEffect(id: "logo", in: namespace)
                 Group {
                     greeting
                     if let errorMessage = viewModel.errorMessage {
                         Text(errorMessage)
+                            .font(.title3)
+                            .fontWeight(.bold)
                     }
                 }
                 .opacity(viewModel.isLoading ? 0 : 1)

@@ -61,7 +61,7 @@ final class QuizViewModel: ObservableObject {
 
     // MARK: - Public Methods
 
-    func cancel() {
+    func back() {
         router.back()
     }
 

@@ -56,10 +56,18 @@ struct QuizResultsView: View {
 
     private var resultsSection: some View {
         VStack(spacing: Constants.titleSpacing) {
-            Text("Результаты")
-                .font(.largeTitle)
-                .fontWeight(.black)
+            VStack(spacing: 16) {
+                Text("Результаты")
+                    .font(.largeTitle)
+                    .fontWeight(.black)
+                    .foregroundStyle(.white)
+
+                VStack(spacing: 4) {
+                    Text("Категория: \(viewModel.quizResult.originalQuiz.category.rawValue)")
+                    Text("Сложность: \(viewModel.quizResult.originalQuiz.difficulty.rawValue)")
+                }
                 .foregroundStyle(.white)
+            }
 
             VStack(spacing: Constants.retryButtonYOffset) {
                 VStack(spacing: Constants.starsToMessageSpacing) {
@@ -78,24 +86,25 @@ struct QuizResultsView: View {
 
     private var resultsText: some View {
         VStack(spacing: Constants.resultTextSpacing) {
-            Text(Strings.QuizResults.title(for: viewModel.completedQuiz.score))
+            Text(viewModel.quizResult.score.title)
                 .font(.title)
                 .fontWeight(.bold)
-            Text(Strings.QuizResults.subtitle(for: viewModel.completedQuiz.score))
+            Text(viewModel.quizResult.score.subtitle)
         }
     }
 
     private var starsView: some View {
         VStack(spacing: Constants.starsToTitleSpaciYng) {
             HStack {
-                ForEach(0..<viewModel.completedQuiz.questionCount, id: \.self) { index in
+                ForEach(0..<Score.maxScore.rawValue, id: \.self) { index in
                     Image(.star)
-                        .renderingMode(.template)
-                        .foregroundStyle(index < viewModel.completedQuiz.score ? Color.App.yellow : Color.App.gray)
+                        .foregroundStyle(
+                            index < viewModel.quizResult.score.rawValue ? Color.App.yellow : Color.App.gray
+                        )
                 }
             }
 
-            Text("\(viewModel.completedQuiz.score) из \(viewModel.completedQuiz.questionCount)")
+            Text("\(viewModel.quizResult.score.rawValue) из \(Score.maxScore.rawValue)")
                 .foregroundStyle(Color.App.yellow)
                 .fontWeight(.bold)
         }
@@ -110,7 +119,7 @@ struct QuizResultsView: View {
 
             LazyVStack(spacing: Constants.answerListSpacing) {
                 ForEach(
-                    Array(viewModel.completedQuiz.originalQuiz.questions.enumerated()
+                    Array(viewModel.quizResult.originalQuiz.questions.enumerated()
                          ),
                     id: \.element.id
                 ) { index, question in
@@ -124,7 +133,7 @@ struct QuizResultsView: View {
         VStack(spacing: Constants.answerCardSpacing) {
             VStack(spacing: Constants.answerCardHeaderSpacing) {
                 HStack {
-                    Text("Вопрос \(index + 1) из \(viewModel.completedQuiz.questionCount)")
+                    Text("Вопрос \(index + 1) из \(viewModel.quizResult.questionCount)")
                         .fontWeight(.bold)
                         .foregroundStyle(Color.App.gray)
                     Spacer()
@@ -133,6 +142,7 @@ struct QuizResultsView: View {
                 Text(question.question)
                     .font(.title3)
                     .fontWeight(.semibold)
+                    .multilineTextAlignment(.center)
             }
 
             ForEach(question.answers) { answer in

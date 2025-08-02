@@ -56,6 +56,7 @@ struct RadioView: View {
                 .frame(width: size, height: size)
             image?
                 .resizable()
+                .foregroundStyle(.white)
                 .frame(width: imageSize, height: imageSize)
         }
     }
