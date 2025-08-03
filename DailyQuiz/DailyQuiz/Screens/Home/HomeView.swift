@@ -12,12 +12,13 @@ struct HomeView: View {
     // MARK: - Constants
 
     private enum Constants {
+        static let logoWidth: CGFloat = 300
         static let historyButtonYOffset: CGFloat = 46
         static let historyButtonHStackSpacing: CGFloat = 12
         static let historyButtonPadding: CGFloat = 12
         static let mainVStackSpacing: CGFloat = 40
         static let greetingContainerSpacing: CGFloat = 40
-        static let xPadding: CGFloat = 16
+        static let horizontalPadding: CGFloat = 16
     }
 
     // MARK: - Properties
@@ -31,40 +32,40 @@ struct HomeView: View {
 
     var body: some View {
         ZStack {
-            history
+            historyButton
                 .frame(maxHeight: .infinity, alignment: .top)
                 .padding(.top, Constants.historyButtonYOffset)
 
             VStack(spacing: Constants.mainVStackSpacing) {
-                Image(.logo)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .foregroundStyle(.white)
-                    .frame(width: 300)
-                    .matchedGeometryEffect(id: "logo", in: namespace)
-
-                greeting
+                logo
+                greetingSection
             }
         }
     }
 
     // MARK: - Subviews
 
-    var history: some View {
+    private var logo: some View {
+        Image(.logo)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .foregroundStyle(.white)
+            .frame(width: Constants.logoWidth)
+            .matchedGeometryEffect(id: "logo", in: namespace)
+    }
+
+    private var historyButton: some View {
         VStack {
-            Button(
-                action: {
-                    viewModel.showHistory()
-                },
-                label: {
-                    HStack(spacing: Constants.historyButtonHStackSpacing) {
-                        Text("История")
-                            .font(.caption)
-                            .fontWeight(.semibold)
-                        Image(.history)
-                    }
+            Button {
+                viewModel.showHistory()
+            } label: {
+                HStack(spacing: Constants.historyButtonHStackSpacing) {
+                    Text("История")
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                    Image(.history)
                 }
-            )
+            }
             .padding(Constants.historyButtonPadding)
             .background(.white)
             .foregroundStyle(Color.App.purple)
@@ -75,12 +76,13 @@ struct HomeView: View {
         }
     }
 
-    var greeting: some View {
+    private var greetingSection: some View {
         VStack(spacing: Constants.greetingContainerSpacing) {
             Text("Добро пожаловать в DailyQuiz!")
                 .font(.title)
                 .multilineTextAlignment(.center)
                 .fontWeight(.bold)
+
             Button {
                 viewModel.start()
             } label: {
@@ -88,10 +90,9 @@ struct HomeView: View {
             }
             .buttonStyle(DQButtonStyle(.accent))
             .frame(maxWidth: .infinity)
-
         }
         .dqContainerStyle()
         .frame(maxWidth: .infinity)
-        .padding(.horizontal, Constants.xPadding)
+        .padding(.horizontal, Constants.horizontalPadding)
     }
 }

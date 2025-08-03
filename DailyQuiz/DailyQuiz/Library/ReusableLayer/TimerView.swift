@@ -31,7 +31,7 @@ struct TimerView: View {
                 Text(DateComponentsFormatter.minutesSeconds.string(from: totalTime) ?? "")
             }
             .font(.caption)
-            MyProgressView(progress: currentTime / totalTime)
+            CustomProgressView(progress: currentTime / totalTime)
                 .tint(Color.App.darkPurple)
                 .frame(height: Constants.progressLineHeight)
         }

@@ -36,7 +36,9 @@ enum Score: Int {
 
     // Это не вяжется с сообщениями выше, но хорошо для масштабируемости
     static func normalized(from correctAnswers: Int, totalQuestions: Int) -> Score {
-        guard totalQuestions > 0 else { return .zero }
+        guard totalQuestions > 0 else {
+            return .zero
+        }
 
         let ratio = Double(correctAnswers) / Double(totalQuestions)
 

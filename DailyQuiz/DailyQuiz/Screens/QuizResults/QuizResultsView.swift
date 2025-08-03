@@ -15,24 +15,18 @@ struct QuizResultsView: View {
         static let sectionSpacing: CGFloat = 36
         static let verticalPadding: CGFloat = 32
         static let horizontalPadding: CGFloat = 26
-
-        static let titleSpacing: CGFloat = 40
-
+        static let sectionHeaderSpacing: CGFloat = 40
         static let retryButtonYOffset: CGFloat = 64
-        static let starsToMessageSpacing: CGFloat = 24
-        static let resultTextSpacing: CGFloat = 12
-        static let starsToTitleSpaciYng: CGFloat = 24
-
         static let answerListSpacing: CGFloat = 24
-        static let answerCardSpacing: CGFloat = 24
-        static let answerCardHeaderSpacing: CGFloat = 20
-
+        static let resultsHeaderSpacing: CGFloat = 16
+        static let resultsHeaderInfoSpacing: CGFloat = 4
         static let sectionRetryButtonHorizontalPadding: CGFloat = 24
     }
 
     // MARK: - Properties
 
-    @ObservedObject var viewModel: QuizResultsViewModel
+    @ObservedObject
+    var viewModel: QuizResultsViewModel
 
     // MARK: - Body
 
@@ -40,8 +34,11 @@ struct QuizResultsView: View {
         ScrollView {
             LazyVStack(spacing: Constants.sectionSpacing) {
                 resultsSection
+
                 if !viewModel.isBrief {
+
                     answersSection
+
                     retryButton(style: .white)
                         .padding(.horizontal, Constants.sectionRetryButtonHorizontalPadding)
                 }
@@ -55,25 +52,11 @@ struct QuizResultsView: View {
     // MARK: - Sections
 
     private var resultsSection: some View {
-        VStack(spacing: Constants.titleSpacing) {
-            VStack(spacing: 16) {
-                Text("Результаты")
-                    .font(.largeTitle)
-                    .fontWeight(.black)
-                    .foregroundStyle(.white)
-
-                VStack(spacing: 4) {
-                    Text("Категория: \(viewModel.quizResult.originalQuiz.category.displayString)")
-                    Text("Сложность: \(viewModel.quizResult.originalQuiz.difficulty.displayString)")
-                }
-                .foregroundStyle(.white)
-            }
+        VStack(spacing: Constants.sectionHeaderSpacing) {
+            resultsHeader
 
             VStack(spacing: Constants.retryButtonYOffset) {
-                VStack(spacing: Constants.starsToMessageSpacing) {
-                    starsView
-                    resultsText
-                }
+                ResultsScoreView(score: viewModel.quizResult.score)
                 if viewModel.isBrief {
                     retryButton(style: .accent)
                 }
@@ -84,73 +67,41 @@ struct QuizResultsView: View {
         }
     }
 
-    private var resultsText: some View {
-        VStack(spacing: Constants.resultTextSpacing) {
-            Text(viewModel.quizResult.score.title)
-                .font(.title)
-                .fontWeight(.bold)
-            Text(viewModel.quizResult.score.subtitle)
-        }
-    }
+    private var resultsHeader: some View {
+        VStack(spacing: Constants.resultsHeaderSpacing) {
+            SectionTitleView("Результаты")
 
-    private var starsView: some View {
-        VStack(spacing: Constants.starsToTitleSpaciYng) {
-            HStack {
-                ForEach(0..<Score.maxScore.rawValue, id: \.self) { index in
-                    Image(.star)
-                        .foregroundStyle(
-                            index < viewModel.quizResult.score.rawValue ? Color.App.yellow : Color.App.gray
-                        )
-                }
+            VStack(spacing: Constants.resultsHeaderInfoSpacing) {
+                Text("Категория: \(viewModel.quizResult.originalQuiz.category.displayString)")
+                Text("Сложность: \(viewModel.quizResult.originalQuiz.difficulty.displayString)")
             }
-
-            Text("\(viewModel.quizResult.score.rawValue) из \(Score.maxScore.rawValue)")
-                .foregroundStyle(Color.App.yellow)
-                .fontWeight(.bold)
+            .foregroundStyle(.white)
         }
+
     }
 
     private var answersSection: some View {
-        VStack(spacing: Constants.titleSpacing) {
-            Text("Твои ответы")
-                .font(.largeTitle)
-                .fontWeight(.black)
-                .foregroundStyle(.white)
+        VStack(spacing: Constants.sectionHeaderSpacing) {
+            SectionTitleView("Твои ответы")
 
             LazyVStack(spacing: Constants.answerListSpacing) {
                 ForEach(
-                    Array(viewModel.quizResult.originalQuiz.questions.enumerated()
-                         ),
+                    Array(viewModel.quizResult.originalQuiz.questions.enumerated()),
                     id: \.element.id
                 ) { index, question in
-                    answerCard(for: question, index: index)
+                    AnswerCardView(
+                        question: question,
+                        index: index,
+                        questionCount: viewModel.quizResult.questionCount,
+                        questionStatus: viewModel.questionStatus(question),
+                        answerStatusProvider: viewModel.answerStatus
+                    )
                 }
             }
         }
     }
 
-    private func answerCard(for question: QuestionEntity, index: Int) -> some View {
-        VStack(spacing: Constants.answerCardSpacing) {
-            VStack(spacing: Constants.answerCardHeaderSpacing) {
-                HStack {
-                    Text("Вопрос \(index + 1) из \(viewModel.quizResult.questionCount)")
-                        .fontWeight(.bold)
-                        .foregroundStyle(Color.App.gray)
-                    Spacer()
-                    RadioView(status: viewModel.questionStatus(question))
-                }
-                Text(question.question)
-                    .font(.title3)
-                    .fontWeight(.semibold)
-                    .multilineTextAlignment(.center)
-            }
-
-            ForEach(question.answers) { answer in
-                AnswerView(status: viewModel.answerStatus(answer), text: answer.text)
-            }
-        }
-        .dqContainerStyle()
-    }
+    // MARK: - Private Methods
 
     private func retryButton(style: DQButtonStyle.ButtonType) -> some View {
         Button(action: {
