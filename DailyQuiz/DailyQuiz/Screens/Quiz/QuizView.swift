@@ -15,14 +15,7 @@ struct QuizView: View {
         static let verticalPadding: CGFloat = 32
         static let horizontalPadding: CGFloat = 26
         static let spacingBetweenQuestionAndNote: CGFloat = 16
-
-        static let answerCardSpacing: CGFloat = 24
-        static let answersSpacing: CGFloat = 16
-
         static let logoWidth: CGFloat = 180
-
-        static let alertSpacing: CGFloat = 40
-        static let alertTextSpacing: CGFloat = 12
     }
 
     // MARK: - Properties
@@ -42,7 +35,7 @@ struct QuizView: View {
                 .frame(maxHeight: .infinity, alignment: .top)
 
             VStack(spacing: Constants.spacingBetweenQuestionAndNote) {
-                questionSection
+                QuizQuestionSection(viewModel: viewModel)
 
                 Text("Вернуться к предыдущим вопросам нельзя")
                     .foregroundStyle(Color.App.white)
@@ -55,7 +48,7 @@ struct QuizView: View {
             viewModel.viewAppeared()
         }
         .customAlert(isPresented: $viewModel.isTimeUpAlertShown) {
-            alertView
+            TimeUpAlert(onRestart: viewModel.restart)
         }
         .onChange(of: viewModel.resultsVisible) { visible in
             guard visible else {
@@ -92,70 +85,4 @@ struct QuizView: View {
         }
     }
 
-    private var questionSection: some View {
-        LazyVStack(spacing: Constants.answerCardSpacing) {
-            TimelineView(.animation) { _ in
-                TimerView(
-                    currentTime: viewModel.timerInfo.elapsed,
-                    totalTime: viewModel.timerInfo.total
-                )
-            }
-
-            Text(viewModel.questionNumerationDescription)
-                .fontWeight(.bold)
-                .foregroundStyle(Color.App.lightPurple)
-
-            Text(viewModel.currentQuestion.question)
-                .font(.title3)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.center)
-
-            LazyVStack(spacing: Constants.answersSpacing) {
-                ForEach(viewModel.currentQuestion.answers) { answer in
-                    Button {
-                        viewModel.toggleAnswer(answer)
-                    } label: {
-                        AnswerView(
-                            status: viewModel.answerStatus(answer: answer),
-                            text: answer.text
-                        )
-                    }
-                    .disabled(viewModel.resultsVisible)
-                }
-
-                Button {
-                    viewModel.submit()
-                } label: {
-                    Text(viewModel.submitButtonText.uppercased())
-                }
-                .buttonStyle(DQButtonStyle(.accent))
-                .disabled(!viewModel.isSubmittable || viewModel.resultsVisible)
-            }
-        }
-        .dqContainerStyle()
-    }
-
-    private var alertView: some View {
-        VStack(spacing: Constants.alertSpacing) {
-            VStack(spacing: Constants.alertTextSpacing) {
-                Text("Время вышло")
-                    .font(.title)
-                    .fontWeight(.bold)
-                Text("Вы не успели завершить викторину. Попробуйте ещё раз!")
-            }
-            .multilineTextAlignment(.center)
-
-            Button(action: {
-                viewModel.restart()
-            }, label: {
-                Text("Начать заново".uppercased())
-            })
-            .buttonStyle(DQButtonStyle(.accent))
-        }
-        .dqContainerStyle()
-        .padding(.horizontal, Constants.horizontalPadding)
-        .onAppear {
-            feedbackGenerator.notificationOccurred(.warning)
-        }
-    }
 }

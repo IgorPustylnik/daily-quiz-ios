@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		550165662E3FB2C00025FA2F /* TimeUpAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550165652E3FB2C00025FA2F /* TimeUpAlert.swift */; };
+		550165682E3FB37E0025FA2F /* QuizQuestionSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550165672E3FB37E0025FA2F /* QuizQuestionSection.swift */; };
+		5501656A2E3FB3940025FA2F /* QuizAnswersSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550165692E3FB3940025FA2F /* QuizAnswersSection.swift */; };
 		550DAEEF2E3CBD5800EC2033 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAEEE2E3CBD5800EC2033 /* Router.swift */; };
 		550DAEF12E3CBD5C00EC2033 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAEF02E3CBD5C00EC2033 /* Route.swift */; };
 		550DAEFC2E3CBFAC00EC2033 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 550DAEFB2E3CBFAC00EC2033 /* Typealiases.swift */; };
@@ -79,6 +82,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		550165652E3FB2C00025FA2F /* TimeUpAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeUpAlert.swift; sourceTree = "<group>"; };
+		550165672E3FB37E0025FA2F /* QuizQuestionSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestionSection.swift; sourceTree = "<group>"; };
+		550165692E3FB3940025FA2F /* QuizAnswersSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizAnswersSection.swift; sourceTree = "<group>"; };
 		550DAEEE2E3CBD5800EC2033 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		550DAEF02E3CBD5C00EC2033 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		550DAEFB2E3CBFAC00EC2033 /* Typealiases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
@@ -319,10 +325,10 @@
 		550DAF132E3CF9D100EC2033 /* Quiz */ = {
 			isa = PBXGroup;
 			children = (
+				552C0BF52E3FB4A500CA1BED /* Subviews */,
 				550DAF142E3CF9DD00EC2033 /* QuizAssembly.swift */,
 				550DAF2F2E3D00DA00EC2033 /* QuizViewModel.swift */,
 				550DAF312E3D00E000EC2033 /* QuizView.swift */,
-				550DAF482E3D185300EC2033 /* AnswerView.swift */,
 			);
 			path = Quiz;
 			sourceTree = "<group>";
@@ -380,6 +386,17 @@
 				55FDA4442E3F4F82001B09D5 /* CoreDataService.swift */,
 			);
 			path = CoreData;
+			sourceTree = "<group>";
+		};
+		552C0BF52E3FB4A500CA1BED /* Subviews */ = {
+			isa = PBXGroup;
+			children = (
+				550DAF482E3D185300EC2033 /* AnswerView.swift */,
+				550165652E3FB2C00025FA2F /* TimeUpAlert.swift */,
+				550165672E3FB37E0025FA2F /* QuizQuestionSection.swift */,
+				550165692E3FB3940025FA2F /* QuizAnswersSection.swift */,
+			);
+			path = Subviews;
 			sourceTree = "<group>";
 		};
 		5571DDD32E3CBB6B00EDB4AA = {
@@ -601,7 +618,9 @@
 				55D59B472E3E6ABB008AD86C /* AnswerCD+CoreDataClass.swift in Sources */,
 				55D59B482E3E6ABB008AD86C /* AnswerCD+CoreDataProperties.swift in Sources */,
 				55FDA4432E3F4F45001B09D5 /* DailyQuiz.xcdatamodeld in Sources */,
+				5501656A2E3FB3940025FA2F /* QuizAnswersSection.swift in Sources */,
 				550DAF472E3D13AE00EC2033 /* RadioStatus.swift in Sources */,
+				550165682E3FB37E0025FA2F /* QuizQuestionSection.swift in Sources */,
 				55FDA4452E3F4F82001B09D5 /* CoreDataService.swift in Sources */,
 				55D59B492E3E6ABB008AD86C /* AnswerSelectionCD+CoreDataClass.swift in Sources */,
 				550DAF3F2E3D07F700EC2033 /* AnswerEntity.swift in Sources */,
@@ -621,6 +640,7 @@
 				550DAEF12E3CBD5C00EC2033 /* Route.swift in Sources */,
 				55D59B632E3EAC03008AD86C /* NetworkManager.swift in Sources */,
 				55D59B4E2E3E6ABB008AD86C /* QuestionCD+CoreDataProperties.swift in Sources */,
+				550165662E3FB2C00025FA2F /* TimeUpAlert.swift in Sources */,
 				550DAF322E3D00E000EC2033 /* QuizView.swift in Sources */,
 				550DAF152E3CF9DD00EC2033 /* QuizAssembly.swift in Sources */,
 				550DAF242E3CFBD700EC2033 /* TriviaDifficulty.swift in Sources */,
