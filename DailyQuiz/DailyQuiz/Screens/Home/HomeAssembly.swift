@@ -10,7 +10,7 @@ import SwiftUI
 final class HomeAssembly {
     func build(router: Router, namespace: Namespace.ID) -> HomeView {
         let triviaGenerator = TriviaGeneratorNetworkService()
-        let viewModel = HomeViewModel(router: router, triviaGenerator: triviaGenerator)
+        let viewModel = HomeViewModel(router: router)
         return HomeView(viewModel: viewModel, namespace: namespace)
     }
 }

@@ -30,6 +30,8 @@ struct QuizView: View {
     @ObservedObject
     var viewModel: QuizViewModel
 
+    private let feedbackGenerator = UINotificationFeedbackGenerator()
+
     let namespace: Namespace.ID
 
     // MARK: - Body
@@ -46,14 +48,25 @@ struct QuizView: View {
                     .foregroundStyle(Color.App.white)
                     .font(.caption)
             }
-            .padding(.vertical, Constants.verticalPadding)
         }
+        .padding(.vertical, Constants.verticalPadding)
         .padding(.horizontal, Constants.horizontalPadding)
         .onAppear {
             viewModel.viewAppeared()
         }
         .customAlert(isPresented: $viewModel.isTimeUpAlertShown) {
             alertView
+        }
+        .onChange(of: viewModel.resultsVisible) { visible in
+            guard visible else {
+                return
+            }
+            feedbackGenerator.prepare()
+            if viewModel.isCurrentQuestionCorrect {
+                feedbackGenerator.notificationOccurred(.success)
+            } else {
+                feedbackGenerator.notificationOccurred(.error)
+            }
         }
     }
 
@@ -133,7 +146,7 @@ struct QuizView: View {
             .multilineTextAlignment(.center)
 
             Button(action: {
-                viewModel.back()
+                viewModel.restart()
             }, label: {
                 Text("Начать заново".uppercased())
             })
@@ -141,5 +154,8 @@ struct QuizView: View {
         }
         .dqContainerStyle()
         .padding(.horizontal, Constants.horizontalPadding)
+        .onAppear {
+            feedbackGenerator.notificationOccurred(.warning)
+        }
     }
 }

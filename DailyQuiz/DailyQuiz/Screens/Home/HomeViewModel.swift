@@ -12,39 +12,17 @@ final class HomeViewModel: ObservableObject {
     // MARK: - Private Properties
 
     private let router: Router
-    private let triviaGenerator: TriviaGeneratorService
-
-    // MARK: - Public Properties
-
-    @Published
-    var errorMessage: String?
-
-    @Published
-    var isLoading: Bool = false
 
     // MARK: - Init
 
-    init(router: Router, triviaGenerator: TriviaGeneratorService) {
+    init(router: Router) {
         self.router = router
-        self.triviaGenerator = triviaGenerator
     }
 
     // MARK: - Public Methods
 
     func start() {
-        Task { @MainActor in
-            isLoading = true
-            defer {
-                isLoading = false
-            }
-
-            do {
-                let quiz = try await triviaGenerator.generateQuiz(preferences: .init())
-                router.startQuiz(quiz)
-            } catch {
-                errorMessage = "Ошибка! Попробуйте ещё раз"
-            }
-        }
+        router.showFilters()
     }
 
     func showHistory() {

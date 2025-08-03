@@ -8,7 +8,7 @@
 import Foundation
 
 enum OpenTriviaUrlRoute {
-    case fetch(amount: Int, categoryId: Int?, difficulty: TriviaDifficulty?, type: QuestionType?)
+    case fetch(amount: Int, category: TriviaCategory?, difficulty: TriviaDifficulty?, type: QuestionType?)
 }
 
 extension OpenTriviaUrlRoute {
@@ -19,16 +19,16 @@ extension OpenTriviaUrlRoute {
         components.path = "/api.php"
 
         switch self {
-        case .fetch(let amount, let categoryId, let difficulty, let type):
+        case .fetch(let amount, let category, let difficulty, let type):
             var queryItems: [URLQueryItem] = [
                 URLQueryItem(name: "amount", value: String(amount))
             ]
 
-            if let categoryId {
-                queryItems.append(.init(name: "category", value: String(categoryId)))
+            if let category, category != .any {
+                queryItems.append(.init(name: "category", value: String(category.id)))
             }
 
-            if let difficulty, difficulty != .unknown {
+            if let difficulty, difficulty != .any {
                 queryItems.append(.init(name: "difficulty", value: difficulty.rawValue))
             }
 

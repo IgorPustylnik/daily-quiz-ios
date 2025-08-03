@@ -63,8 +63,8 @@ struct QuizResultsView: View {
                     .foregroundStyle(.white)
 
                 VStack(spacing: 4) {
-                    Text("Категория: \(viewModel.quizResult.originalQuiz.category.rawValue)")
-                    Text("Сложность: \(viewModel.quizResult.originalQuiz.difficulty.rawValue)")
+                    Text("Категория: \(viewModel.quizResult.originalQuiz.category.displayString)")
+                    Text("Сложность: \(viewModel.quizResult.originalQuiz.difficulty.displayString)")
                 }
                 .foregroundStyle(.white)
             }

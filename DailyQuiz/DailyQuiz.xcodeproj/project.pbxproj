@@ -71,6 +71,11 @@
 		55FDA4432E3F4F45001B09D5 /* DailyQuiz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55FDA4412E3F4F45001B09D5 /* DailyQuiz.xcdatamodeld */; };
 		55FDA4452E3F4F82001B09D5 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDA4442E3F4F82001B09D5 /* CoreDataService.swift */; };
 		55FDA4492E3F5B2B001B09D5 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDA4482E3F5B2B001B09D5 /* CustomAlert.swift */; };
+		55FDA4532E3F753B001B09D5 /* CustomSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDA4522E3F753B001B09D5 /* CustomSpinner.swift */; };
+		55FDA4562E3F7D2B001B09D5 /* FiltersAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDA4552E3F7D2B001B09D5 /* FiltersAssembly.swift */; };
+		55FDA4582E3F7D32001B09D5 /* FiltersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDA4572E3F7D32001B09D5 /* FiltersViewModel.swift */; };
+		55FDA45A2E3F7D39001B09D5 /* FiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDA4592E3F7D39001B09D5 /* FiltersView.swift */; };
+		55FDA45C2E3F7E54001B09D5 /* PickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDA45B2E3F7E54001B09D5 /* PickerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +144,11 @@
 		55FDA4422E3F4F45001B09D5 /* DailyQuiz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DailyQuiz.xcdatamodel; sourceTree = "<group>"; };
 		55FDA4442E3F4F82001B09D5 /* CoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		55FDA4482E3F5B2B001B09D5 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		55FDA4522E3F753B001B09D5 /* CustomSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSpinner.swift; sourceTree = "<group>"; };
+		55FDA4552E3F7D2B001B09D5 /* FiltersAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersAssembly.swift; sourceTree = "<group>"; };
+		55FDA4572E3F7D32001B09D5 /* FiltersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
+		55FDA4592E3F7D39001B09D5 /* FiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersView.swift; sourceTree = "<group>"; };
+		55FDA45B2E3F7E54001B09D5 /* PickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				550DAF002E3CDC4E00EC2033 /* Home */,
+				55FDA4542E3F7D17001B09D5 /* Filters */,
 				550DAF132E3CF9D100EC2033 /* Quiz */,
 				550DAF5A2E3E1A7600EC2033 /* QuizResults */,
 				55D59B512E3E764F008AD86C /* History */,
@@ -264,6 +275,8 @@
 				55D59B672E3EB3BC008AD86C /* TimerView.swift */,
 				55D59B692E3EB40E008AD86C /* MyProgressView.swift */,
 				55FDA4482E3F5B2B001B09D5 /* CustomAlert.swift */,
+				55FDA4522E3F753B001B09D5 /* CustomSpinner.swift */,
+				55FDA45B2E3F7E54001B09D5 /* PickerView.swift */,
 			);
 			path = ReusableLayer;
 			sourceTree = "<group>";
@@ -455,6 +468,16 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		55FDA4542E3F7D17001B09D5 /* Filters */ = {
+			isa = PBXGroup;
+			children = (
+				55FDA4552E3F7D2B001B09D5 /* FiltersAssembly.swift */,
+				55FDA4572E3F7D32001B09D5 /* FiltersViewModel.swift */,
+				55FDA4592E3F7D39001B09D5 /* FiltersView.swift */,
+			);
+			path = Filters;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -561,14 +584,17 @@
 				550DAF042E3CDC6D00EC2033 /* HomeAssembly.swift in Sources */,
 				550DAF5C2E3E1A8B00EC2033 /* QuizResultsAssembly.swift in Sources */,
 				55D59B502E3E6ABC008AD86C /* QuizCD+CoreDataProperties.swift in Sources */,
+				55FDA4532E3F753B001B09D5 /* CustomSpinner.swift in Sources */,
 				550DAF0E2E3CE68000EC2033 /* DQButtonStyle.swift in Sources */,
 				55D59B652E3EAF6D008AD86C /* String+ext.swift in Sources */,
+				55FDA4562E3F7D2B001B09D5 /* FiltersAssembly.swift in Sources */,
 				5571DDE22E3CBB6C00EDB4AA /* RootView.swift in Sources */,
 				550DAF062E3CDC7200EC2033 /* HomeViewModel.swift in Sources */,
 				55FDA4492E3F5B2B001B09D5 /* CustomAlert.swift in Sources */,
 				55D59B6A2E3EB40E008AD86C /* MyProgressView.swift in Sources */,
 				550DAF2A2E3CFC7000EC2033 /* QuizEntry.swift in Sources */,
 				550DAF192E3CFB6400EC2033 /* QuestionEntity.swift in Sources */,
+				55FDA4582E3F7D32001B09D5 /* FiltersViewModel.swift in Sources */,
 				55D59B612E3EA9BF008AD86C /* QuizPreferencesEntity.swift in Sources */,
 				55FDA43C2E3F4271001B09D5 /* TimerManager.swift in Sources */,
 				550DAF1C2E3CFB8E00EC2033 /* RawMappable.swift in Sources */,
@@ -584,7 +610,9 @@
 				55D59B4A2E3E6ABB008AD86C /* AnswerSelectionCD+CoreDataProperties.swift in Sources */,
 				550DAF302E3D00DA00EC2033 /* QuizViewModel.swift in Sources */,
 				550DAF5E2E3E1A9300EC2033 /* QuizResultsViewModel.swift in Sources */,
+				55FDA45C2E3F7E54001B09D5 /* PickerView.swift in Sources */,
 				550DAF102E3CE84F00EC2033 /* DQContainerStyle.swift in Sources */,
+				55FDA45A2E3F7D39001B09D5 /* FiltersView.swift in Sources */,
 				550DAF1E2E3CFB9800EC2033 /* DTOConvertible.swift in Sources */,
 				550DAF602E3E1A9B00EC2033 /* QuizResultsView.swift in Sources */,
 				550DAF502E3E05ED00EC2033 /* TriviaGeneratorMockService.swift in Sources */,

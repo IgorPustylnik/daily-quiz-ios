@@ -68,8 +68,8 @@ struct ResultCardView: View {
 
     private var quizInfo: some View {
         VStack(spacing: Constants.quizInfoSpacing) {
-            Text("Категория: \(quizResult.originalQuiz.category)")
-            Text("Сложность: \(quizResult.originalQuiz.difficulty)")
+            Text("Категория: \(quizResult.originalQuiz.category.displayString)")
+            Text("Сложность: \(quizResult.originalQuiz.difficulty.displayString)")
         }
     }
 }
