@@ -71,6 +71,7 @@
 		55FDA4432E3F4F45001B09D5 /* DailyQuiz.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 55FDA4412E3F4F45001B09D5 /* DailyQuiz.xcdatamodeld */; };
 		55FDA4452E3F4F82001B09D5 /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDA4442E3F4F82001B09D5 /* CoreDataService.swift */; };
 		55FDA4492E3F5B2B001B09D5 /* CustomAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDA4482E3F5B2B001B09D5 /* CustomAlert.swift */; };
+		55FDA4532E3F753B001B09D5 /* CustomSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55FDA4522E3F753B001B09D5 /* CustomSpinner.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -139,6 +140,7 @@
 		55FDA4422E3F4F45001B09D5 /* DailyQuiz.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DailyQuiz.xcdatamodel; sourceTree = "<group>"; };
 		55FDA4442E3F4F82001B09D5 /* CoreDataService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		55FDA4482E3F5B2B001B09D5 /* CustomAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlert.swift; sourceTree = "<group>"; };
+		55FDA4522E3F753B001B09D5 /* CustomSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSpinner.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +266,7 @@
 				55D59B672E3EB3BC008AD86C /* TimerView.swift */,
 				55D59B692E3EB40E008AD86C /* MyProgressView.swift */,
 				55FDA4482E3F5B2B001B09D5 /* CustomAlert.swift */,
+				55FDA4522E3F753B001B09D5 /* CustomSpinner.swift */,
 			);
 			path = ReusableLayer;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				550DAF042E3CDC6D00EC2033 /* HomeAssembly.swift in Sources */,
 				550DAF5C2E3E1A8B00EC2033 /* QuizResultsAssembly.swift in Sources */,
 				55D59B502E3E6ABC008AD86C /* QuizCD+CoreDataProperties.swift in Sources */,
+				55FDA4532E3F753B001B09D5 /* CustomSpinner.swift in Sources */,
 				550DAF0E2E3CE68000EC2033 /* DQButtonStyle.swift in Sources */,
 				55D59B652E3EAF6D008AD86C /* String+ext.swift in Sources */,
 				5571DDE22E3CBB6C00EDB4AA /* RootView.swift in Sources */,

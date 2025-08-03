@@ -49,15 +49,12 @@ struct HomeView: View {
                         Text(errorMessage)
                             .font(.title3)
                             .fontWeight(.bold)
+                            .foregroundStyle(.white)
                     }
                 }
                 .opacity(viewModel.isLoading ? 0 : 1)
             }
-
-            ProgressView()
-                .progressViewStyle(.circular)
-                .scaleEffect(.init(width: 3, height: 3))
-                .tint(.white)
+            CustomSpinner(style: .big)
                 .opacity(viewModel.isLoading ? 1 : 0)
         }
     }
