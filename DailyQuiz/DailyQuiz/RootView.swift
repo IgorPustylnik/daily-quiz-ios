@@ -14,7 +14,8 @@ struct RootView: View {
     @ObservedObject
     private var router = Router.shared
 
-    private var persistentStorage: PersistentStorage = CoreDataService.shared
+    private let persistentStorage: PersistentStorage = CoreDataService.shared
+    private let triviaGenerator: TriviaGeneratorService = TriviaGeneratorNetworkService()
 
     @Namespace
     private var transitionNamespace
@@ -41,7 +42,11 @@ struct RootView: View {
             case .history:
                 HistoryAssembly().build(router: router, persistentStorage: persistentStorage)
             case .filters:
-                FiltersAssembly().build(router: router, namespace: transitionNamespace)
+                FiltersAssembly().build(
+                    router: router,
+                    namespace: transitionNamespace,
+                    triviaGenerator: triviaGenerator
+                )
             }
         }
         .animation(.spring(), value: router.path)

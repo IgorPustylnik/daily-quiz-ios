@@ -8,8 +8,7 @@
 import SwiftUI
 
 final class FiltersAssembly {
-    func build(router: Router, namespace: Namespace.ID) -> FiltersView {
-        let triviaGenerator = TriviaGeneratorNetworkService()
+    func build(router: Router, namespace: Namespace.ID, triviaGenerator: TriviaGeneratorService) -> FiltersView {
         let viewModel = FiltersViewModel(router: router, triviaGenerator: triviaGenerator)
         return FiltersView(viewModel: viewModel, namespace: namespace)
     }

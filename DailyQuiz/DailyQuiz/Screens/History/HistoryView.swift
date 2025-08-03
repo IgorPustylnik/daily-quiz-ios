@@ -1,10 +1,3 @@
-//
-//  HistoryView.swift
-//  DailyQuiz
-//
-//  Created by Игорь Пустыльник on 02.08.2025.
-//
-
 import SwiftUI
 
 struct HistoryView: View {
@@ -29,31 +22,29 @@ struct HistoryView: View {
     // MARK: - Body
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: Constants.mainSpacing) {
-                header
-                if viewModel.results.isEmpty {
-                    noResults
-                } else {
-                    resultsList
-                }
-            }
-            .padding(.vertical, Constants.verticalPadding)
-            .padding(.horizontal, Constants.horizontalPadding)
-        }
-        .scrollIndicators(.hidden)
+        TopBarViewContainer(content: {
+            content
+        }, mode: .title("История"), onBack: {
+            viewModel.back()
+        })
         .onAppear {
             viewModel.fetchResults()
         }
+        .customAlert(isPresented: $viewModel.isDeletionAlertPresented) {
+            deletionAlert
+        }
     }
 
-    // MARK: - Subviews
-
-    private var header: some View {
-        Text("История")
-            .font(.largeTitle)
-            .fontWeight(.black)
-            .foregroundStyle(.white)
+    private var content: some View {
+        ScrollView {
+            if viewModel.results.isEmpty {
+                EmptyHistoryView(action: viewModel.showHome)
+            } else {
+                resultsList
+            }
+        }
+        .padding(.horizontal, Constants.horizontalPadding)
+        .scrollIndicators(.hidden)
     }
 
     private var resultsList: some View {
@@ -77,20 +68,13 @@ struct HistoryView: View {
         }
     }
 
-    var noResults: some View {
-        VStack(spacing: Constants.noResultsSpacing) {
-            Text("Вы ещё не проходили ни одной викторины")
-                .font(.title3)
-                .multilineTextAlignment(.center)
-
-            Button(action: {
-                viewModel.showHome()
-            }, label: {
-                Text("Начать викторину".uppercased())
-            })
-            .buttonStyle(DQButtonStyle(.accent))
+    private var deletionAlert: some View {
+        InfoAlert(
+            title: "Попытка удалена",
+            subtitle: "Вы можете пройти викторину снова, когда будете готовы.",
+            buttonTitle: "Хорошо".uppercased()
+        ) {
+            viewModel.isDeletionAlertPresented = false
         }
-        .dqContainerStyle()
     }
-
 }

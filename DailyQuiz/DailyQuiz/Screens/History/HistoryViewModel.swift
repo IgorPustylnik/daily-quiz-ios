@@ -19,6 +19,9 @@ final class HistoryViewModel: ObservableObject {
     @Published
     private(set) var results: [QuizResultEntity] = []
 
+    @Published
+    var isDeletionAlertPresented: Bool = false
+
     // MARK: - Init
 
     init(router: Router, persistentStorage: PersistentStorage) {
@@ -39,10 +42,15 @@ final class HistoryViewModel: ObservableObject {
     func deleteResult(_ quiz: QuizResultEntity) {
         results.removeAll { $0 == quiz }
         persistentStorage.deleteQuizResults([quiz])
+        isDeletionAlertPresented = true
     }
 
     func showHome() {
         router.backToRoot()
+    }
+
+    func back() {
+        router.back()
     }
 
 }

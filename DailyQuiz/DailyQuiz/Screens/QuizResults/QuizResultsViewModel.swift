@@ -51,4 +51,8 @@ final class QuizResultsViewModel: ObservableObject {
         router.backToRoot()
     }
 
+    func back() {
+        router.back()
+    }
+
 }

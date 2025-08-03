@@ -32,7 +32,7 @@ final class TimerManager: ObservableObject {
 
     // MARK: - Public Methods
 
-    func start(duration: TimeInterval, onComplete: @escaping () -> Void) {
+    func start(duration: TimeInterval, onComplete: @escaping EmptyClosure) {
         self.duration = duration
         self.onComplete = onComplete
         self.elapsedTime = 0

@@ -8,9 +8,15 @@
 import SwiftUI
 
 struct CustomAlertModifier<AlertContent: View>: ViewModifier {
+
+    // MARK: - Properties
+
     @Binding
     var isPresented: Bool
+
     let alertContent: () -> AlertContent
+
+    // MARK: - Body
 
     func body(content: Content) -> some View {
         ZStack {
