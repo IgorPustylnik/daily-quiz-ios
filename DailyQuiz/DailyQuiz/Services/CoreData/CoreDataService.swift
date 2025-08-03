@@ -26,7 +26,9 @@ final class CoreDataService: PersistentStorage {
         let request: NSFetchRequest<QuizResultCD> = QuizResultCD.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "completedAt", ascending: false)]
 
-        guard let results = try? context.fetch(request) else { return [] }
+        guard let results = try? context.fetch(request) else {
+            return []
+        }
 
         return results.compactMap { quizResultCD in
             quizResultCD.convertToQuizResultEntity()
@@ -39,7 +41,9 @@ final class CoreDataService: PersistentStorage {
         let request: NSFetchRequest<QuizResultCD> = QuizResultCD.fetchRequest()
         request.predicate = NSPredicate(format: "id in %@", ids)
 
-        guard let results = try? context.fetch(request) else { return }
+        guard let results = try? context.fetch(request) else {
+            return
+        }
 
         results.forEach { context.delete($0) }
 

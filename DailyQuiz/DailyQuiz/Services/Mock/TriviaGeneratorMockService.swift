@@ -8,7 +8,7 @@
 import Foundation
 
 final class TriviaGeneratorMockService: TriviaGeneratorService {
-
+    // swiftlint:disable:next function_body_length
     func generateQuiz(preferences: QuizPreferencesEntity) async throws -> QuizEntity {
         return .init(
             name: "Quiz \(Int.random(in: 1...100))",
