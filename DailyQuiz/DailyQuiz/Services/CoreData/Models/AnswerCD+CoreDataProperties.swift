@@ -19,6 +19,24 @@ extension AnswerCD {
     @NSManaged public var text: String
     @NSManaged public var isCorrect: Bool
     @NSManaged public var question: QuestionCD
+    @NSManaged public var selections: NSSet?
+
+}
+
+// MARK: Generated accessors for selections
+extension AnswerCD {
+
+    @objc(addSelectionsObject:)
+    @NSManaged public func addToSelections(_ value: AnswerSelectionCD)
+
+    @objc(removeSelectionsObject:)
+    @NSManaged public func removeFromSelections(_ value: AnswerSelectionCD)
+
+    @objc(addSelections:)
+    @NSManaged public func addToSelections(_ values: NSSet)
+
+    @objc(removeSelections:)
+    @NSManaged public func removeFromSelections(_ values: NSSet)
 
 }
 
