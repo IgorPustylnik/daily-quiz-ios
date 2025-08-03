@@ -48,8 +48,8 @@ struct QuizView: View {
                     .foregroundStyle(Color.App.white)
                     .font(.caption)
             }
-            .padding(.vertical, Constants.verticalPadding)
         }
+        .padding(.vertical, Constants.verticalPadding)
         .padding(.horizontal, Constants.horizontalPadding)
         .onAppear {
             viewModel.viewAppeared()
@@ -146,7 +146,7 @@ struct QuizView: View {
             .multilineTextAlignment(.center)
 
             Button(action: {
-                viewModel.back()
+                viewModel.restart()
             }, label: {
                 Text("Начать заново".uppercased())
             })

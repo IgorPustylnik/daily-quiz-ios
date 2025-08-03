@@ -34,7 +34,6 @@ struct HomeView: View {
             history
                 .frame(maxHeight: .infinity, alignment: .top)
                 .padding(.top, Constants.historyButtonYOffset)
-                .opacity(viewModel.isLoading ? 0 : 1)
 
             VStack(spacing: Constants.mainVStackSpacing) {
                 Image(.logo)
@@ -43,19 +42,9 @@ struct HomeView: View {
                     .foregroundStyle(.white)
                     .frame(width: 300)
                     .matchedGeometryEffect(id: "logo", in: namespace)
-                Group {
-                    greeting
-                    if let errorMessage = viewModel.errorMessage {
-                        Text(errorMessage)
-                            .font(.title3)
-                            .fontWeight(.bold)
-                            .foregroundStyle(.white)
-                    }
-                }
-                .opacity(viewModel.isLoading ? 0 : 1)
+
+                greeting
             }
-            CustomSpinner(style: .big)
-                .opacity(viewModel.isLoading ? 1 : 0)
         }
     }
 

@@ -12,7 +12,7 @@ final class QuizViewModel: ObservableObject {
     // MARK: - Constants
 
     private enum Constants {
-        static let timerDuration: TimeInterval = 60 * 0.1
+        static let timerDuration: TimeInterval = 60 * 5
         static let answerHighlightDuration: TimeInterval = 2
     }
 
@@ -96,6 +96,10 @@ final class QuizViewModel: ObservableObject {
 
     func back() {
         router.back()
+    }
+
+    func restart() {
+        router.backToRoot()
     }
 
     func toggleAnswer(_ answer: AnswerEntity) {

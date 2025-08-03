@@ -11,4 +11,5 @@ enum Route: Hashable {
     case quiz(QuizEntity)
     case quizResults(QuizResultEntity, isBrief: Bool)
     case history
+    case filters
 }

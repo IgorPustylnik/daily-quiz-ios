@@ -8,10 +8,10 @@
 import Foundation
 
 struct QuizPreferencesEntity {
-    let amount: Int
-    let category: TriviaCategory?
-    let difficulty: TriviaDifficulty?
-    let type: QuestionType?
+    var amount: Int
+    var category: TriviaCategory?
+    var difficulty: TriviaDifficulty?
+    var type: QuestionType?
 
     init(
         amount: Int = 5,

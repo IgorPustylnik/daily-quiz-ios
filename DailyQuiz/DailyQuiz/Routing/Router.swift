@@ -25,6 +25,10 @@ final class Router: ObservableObject {
         path.append(.history)
     }
 
+    func showFilters() {
+        path.append(.filters)
+    }
+
     func backToRoot() {
         path.removeAll()
     }
