@@ -8,5 +8,5 @@
 import Foundation
 
 enum TriviaDifficulty: String, Decodable {
-    case easy, medium, hard, unknown
+    case easy, medium, hard, any
 }

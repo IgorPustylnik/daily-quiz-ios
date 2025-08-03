@@ -68,8 +68,8 @@ extension QuizResultCD {
 
         let quiz = QuizEntity(
             name: originalQuiz.name,
-            difficulty: .init(rawValue: originalQuiz.difficulty) ?? .unknown,
-            category: .init(rawValue: originalQuiz.category) ?? .unknown,
+            difficulty: .init(rawValue: originalQuiz.difficulty) ?? .any,
+            category: .init(rawValue: originalQuiz.category) ?? .any,
             questions: questions
         )
 

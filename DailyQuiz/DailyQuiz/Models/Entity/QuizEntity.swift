@@ -20,8 +20,8 @@ extension QuizEntity: DTODecodable {
     static func from(dto model: DTO) throws -> Self {
         return try .init(
             name: "Quiz \(Int.random(in: 1..<100))",
-            difficulty: .unknown,
-            category: .unknown,
+            difficulty: .any,
+            category: .any,
             questions: model.results.map { try .from(dto: $0) }
         )
     }
@@ -29,8 +29,8 @@ extension QuizEntity: DTODecodable {
     func configure(preferences: QuizPreferencesEntity) -> Self {
         .init(
             name: name,
-            difficulty: preferences.difficulty ?? .unknown,
-            category: preferences.category ?? .unknown,
+            difficulty: preferences.difficulty ?? .any,
+            category: preferences.category ?? .any,
             questions: questions
         )
     }

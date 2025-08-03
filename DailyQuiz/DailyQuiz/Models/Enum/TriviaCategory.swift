@@ -33,7 +33,7 @@ enum TriviaCategory: String, Decodable {
     case entertainmentJapaneseAnimeManga = "Entertainment: Japanese Anime & Manga"
     case entertainmentCartoonAnimations = "Entertainment: Cartoon & Animations"
 
-    case unknown
+    case any
 
     var id: Int {
         switch self {
@@ -61,7 +61,7 @@ enum TriviaCategory: String, Decodable {
         case .scienceGadgets: return 30
         case .entertainmentJapaneseAnimeManga: return 31
         case .entertainmentCartoonAnimations: return 32
-        case .unknown: return -1
+        case .any: return -1
         }
     }
 

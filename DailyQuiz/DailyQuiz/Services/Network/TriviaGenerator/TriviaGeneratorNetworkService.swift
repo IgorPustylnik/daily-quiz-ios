@@ -14,7 +14,7 @@ final class TriviaGeneratorNetworkService: TriviaGeneratorService {
     func generateQuiz(preferences: QuizPreferencesEntity) async throws -> QuizEntity {
         let url = try OpenTriviaUrlRoute.fetch(
             amount: preferences.amount,
-            categoryId: preferences.category?.id,
+            category: preferences.category,
             difficulty: preferences.difficulty,
             type: preferences.type
         ).url()
