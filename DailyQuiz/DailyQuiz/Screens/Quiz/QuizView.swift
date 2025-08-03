@@ -107,6 +107,7 @@ struct QuizView: View {
                             text: answer.text
                         )
                     }
+                    .disabled(viewModel.resultsVisible)
                 }
 
                 Button {
@@ -115,7 +116,7 @@ struct QuizView: View {
                     Text(viewModel.submitButtonText.uppercased())
                 }
                 .buttonStyle(DQButtonStyle(.accent))
-                .disabled(!viewModel.isSubmittable)
+                .disabled(!viewModel.isSubmittable || viewModel.resultsVisible)
             }
         }
         .dqContainerStyle()
