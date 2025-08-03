@@ -7,6 +7,10 @@
 
 import Foundation
 
-enum TriviaDifficulty: String, Decodable {
-    case easy, medium, hard, any
+enum TriviaDifficulty: String, Decodable, CaseIterable {
+    case any, easy, medium, hard
+
+    var displayString: String {
+        rawValue.capitalized
+    }
 }
