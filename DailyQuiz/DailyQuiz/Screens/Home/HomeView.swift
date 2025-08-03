@@ -1,0 +1,98 @@
+//
+//  HomeView.swift
+//  DailyQuiz
+//
+//  Created by Игорь Пустыльник on 01.08.2025.
+//
+
+import SwiftUI
+
+struct HomeView: View {
+
+    // MARK: - Constants
+
+    private enum Constants {
+        static let logoWidth: CGFloat = 300
+        static let historyButtonYOffset: CGFloat = 46
+        static let historyButtonHStackSpacing: CGFloat = 12
+        static let historyButtonPadding: CGFloat = 12
+        static let mainVStackSpacing: CGFloat = 40
+        static let greetingContainerSpacing: CGFloat = 40
+        static let horizontalPadding: CGFloat = 16
+    }
+
+    // MARK: - Properties
+
+    @ObservedObject
+    var viewModel: HomeViewModel
+
+    let namespace: Namespace.ID
+
+    // MARK: - Body
+
+    var body: some View {
+        ZStack {
+            historyButton
+                .frame(maxHeight: .infinity, alignment: .top)
+                .padding(.top, Constants.historyButtonYOffset)
+
+            VStack(spacing: Constants.mainVStackSpacing) {
+                logo
+                greetingSection
+            }
+        }
+    }
+
+    // MARK: - Subviews
+
+    private var logo: some View {
+        Image(.logo)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .foregroundStyle(.white)
+            .frame(width: Constants.logoWidth)
+            .matchedGeometryEffect(id: "logo", in: namespace)
+    }
+
+    private var historyButton: some View {
+        VStack {
+            Button {
+                viewModel.showHistory()
+            } label: {
+                HStack(spacing: Constants.historyButtonHStackSpacing) {
+                    Text("История")
+                        .font(.caption)
+                        .fontWeight(.semibold)
+                    Image(.history)
+                }
+            }
+            .padding(Constants.historyButtonPadding)
+            .background(.white)
+            .foregroundStyle(Color.App.purple)
+            .buttonStyle(.plain)
+            .clipShape(.capsule)
+
+            Spacer()
+        }
+    }
+
+    private var greetingSection: some View {
+        VStack(spacing: Constants.greetingContainerSpacing) {
+            Text("Добро пожаловать в DailyQuiz!")
+                .font(.title)
+                .multilineTextAlignment(.center)
+                .fontWeight(.bold)
+
+            Button {
+                viewModel.start()
+            } label: {
+                Text("Начать викторину".uppercased())
+            }
+            .buttonStyle(DQButtonStyle(.accent))
+            .frame(maxWidth: .infinity)
+        }
+        .dqContainerStyle()
+        .frame(maxWidth: .infinity)
+        .padding(.horizontal, Constants.horizontalPadding)
+    }
+}

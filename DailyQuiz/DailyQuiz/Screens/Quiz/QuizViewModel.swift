@@ -1,0 +1,181 @@
+//
+//  QuizViewModel.swift
+//  DailyQuiz
+//
+//  Created by Игорь Пустыльник on 01.08.2025.
+//
+
+import Foundation
+
+final class QuizViewModel: ObservableObject {
+
+    // MARK: - Constants
+
+    private enum Constants {
+        static let timerDuration: TimeInterval = 60 * 5
+        static let answerHighlightDuration: TimeInterval = 2
+    }
+
+    // MARK: - Private Properties
+
+    private let router: Router
+    private let persistentStorage: PersistentStorage
+    private let timerManager = TimerManager()
+
+    @Published
+    private var currentQuestionIndex: Int = 0
+
+    // MARK: - Public Properties
+
+    let quiz: QuizEntity
+
+    @Published
+    private(set) var resultsVisible: Bool = false
+
+    @Published
+    private(set) var answersSelection: [AnswerEntity: Bool] = [:]
+
+    @Published
+    private(set) var timeExpired: Bool = false
+
+    @Published
+    var isTimeUpAlertPresented: Bool = false
+
+    // MARK: - Computed Properties
+
+    var currentQuestion: QuestionEntity {
+        quiz.questions[currentQuestionIndex]
+    }
+
+    var questionNumerationDescription: String {
+        "Вопрос \(currentQuestionIndex + 1) из \(quiz.questions.count)"
+    }
+
+    var submitButtonText: String {
+        currentQuestionIndex < quiz.questions.count - 1 ? "Далее" : "Завершить"
+    }
+
+    var isSubmittable: Bool {
+        answersSelection.contains { (answer, isSelected) in
+            isSelected && currentQuestion.answers.contains(answer)
+        }
+    }
+
+    var canGoBack: Bool {
+        currentQuestionIndex == 0
+    }
+
+    var timerInfo: (elapsed: TimeInterval, total: TimeInterval) {
+        (timerManager.elapsedTime, timerManager.duration)
+    }
+
+    var isCurrentQuestionCorrect: Bool {
+        let questionAnswers = currentQuestion.answers
+        for answer in questionAnswers {
+            let selected = answersSelection[answer] ?? false
+            if answer.isCorrect != selected {
+                return false
+            }
+        }
+        return true
+    }
+
+    // MARK: - Init
+
+    init(router: Router, quiz: QuizEntity, persistentStorage: PersistentStorage) {
+        self.router = router
+        self.quiz = quiz
+        self.persistentStorage = persistentStorage
+    }
+
+    // MARK: - Public Methods
+
+    func viewAppeared() {
+        startTimer()
+    }
+
+    func back() {
+        router.back()
+    }
+
+    func restart() {
+        router.backToRoot()
+    }
+
+    func toggleAnswer(_ answer: AnswerEntity) {
+        let wasSelected = answersSelection[answer] ?? false
+
+        quiz.questions[currentQuestionIndex].answers.forEach {
+            answersSelection[$0] = false
+        }
+
+        if !wasSelected {
+            answersSelection[answer] = true
+        }
+    }
+
+    func submit() {
+        guard isSubmittable else {
+            return
+        }
+
+        resultsVisible = true
+        timerManager.pause()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.answerHighlightDuration) { [weak self] in
+            guard let self else {
+                return
+            }
+            resultsVisible = false
+
+            if currentQuestionIndex == quiz.questions.count - 1 {
+                let quizResult = QuizResultEntity(
+                    completedAt: .now,
+                    originalQuiz: quiz,
+                    answersSelection: answersSelection
+                )
+                timerManager.stop()
+                persistentStorage.saveQuizResult(quizResult)
+                router.showQuizResults(quizResult, isShownAfterTaking: true)
+            } else {
+                currentQuestionIndex += 1
+                timerManager.resume()
+            }
+        }
+    }
+
+    func answerStatus(answer: AnswerEntity) -> RadioStatus {
+        let status: RadioStatus
+        let isSelected: Bool = answersSelection[answer] ?? false
+        switch (isSelected, resultsVisible, answer.isCorrect) {
+        case (true, true, true): status = .correct
+        case (true, true, false): status = .wrong
+        case (true, false, _): status = .selected
+        case (false, _, _): status = .unselected
+        }
+        return status
+    }
+
+    // MARK: - Timer Methods
+
+    private func startTimer() {
+        timerManager.start(duration: Constants.timerDuration) { [weak self] in
+            DispatchQueue.main.async {
+                self?.onTimerExpired()
+            }
+        }
+    }
+
+    private func onTimerExpired() {
+        isTimeUpAlertPresented = true
+        timerManager.pause()
+
+        let quizResult: QuizResultEntity = .init(
+            completedAt: .now,
+            originalQuiz: quiz,
+            answersSelection: answersSelection
+        )
+        persistentStorage.saveQuizResult(quizResult)
+    }
+
+}
