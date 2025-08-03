@@ -11,7 +11,8 @@ import CoreData
 
 extension QuizCD {
 
-    @nonobjc public class func fetchRequest() -> NSFetchRequest<QuizCD> {
+    @nonobjc
+    public class func fetchRequest() -> NSFetchRequest<QuizCD> {
         return NSFetchRequest<QuizCD>(entityName: "QuizCD")
     }
 

@@ -5,7 +5,7 @@
         <attribute name="isCorrect" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="text" attributeType="String"/>
         <relationship name="question" maxCount="1" deletionRule="Nullify" destinationEntity="QuestionCD" inverseName="answers" inverseEntity="QuestionCD"/>
-        <relationship name="selections" maxCount="1" deletionRule="Nullify" destinationEntity="AnswerSelectionCD" inverseName="answer" inverseEntity="AnswerSelectionCD"/>
+        <relationship name="selections" toMany="YES" deletionRule="Nullify" destinationEntity="AnswerSelectionCD" inverseName="answer" inverseEntity="AnswerSelectionCD"/>
     </entity>
     <entity name="AnswerSelectionCD" representedClassName="AnswerSelectionCD" syncable="YES">
         <attribute name="isSelected" attributeType="Boolean" usesScalarValueType="YES"/>

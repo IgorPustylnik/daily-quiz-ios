@@ -9,10 +9,17 @@ import Foundation
 
 final class QuizViewModel: ObservableObject {
 
+    // MARK: - Constants
+
+    private enum Constants {
+        static let timerDuration: TimeInterval = 60 * 5
+    }
+
     // MARK: - Private Properties
 
     private let router: Router
     private let persistentStorage: PersistentStorage
+    private let timerManager = TimerManager()
 
     @Published
     private var currentQuestionIndex: Int = 0
@@ -26,6 +33,12 @@ final class QuizViewModel: ObservableObject {
 
     @Published
     private(set) var answersSelection: [AnswerEntity: Bool] = [:]
+
+    @Published
+    private(set) var timeExpired: Bool = false
+
+    @Published
+    var isTimeUpAlertShown: Bool = false
 
     // MARK: - Computed Properties
 
@@ -51,6 +64,10 @@ final class QuizViewModel: ObservableObject {
         currentQuestionIndex == 0
     }
 
+    var timerInfo: (elapsed: TimeInterval, total: TimeInterval) {
+        (timerManager.elapsedTime, timerManager.duration)
+    }
+
     // MARK: - Init
 
     init(router: Router, quiz: QuizEntity, persistentStorage: PersistentStorage) {
@@ -60,6 +77,10 @@ final class QuizViewModel: ObservableObject {
     }
 
     // MARK: - Public Methods
+
+    func viewAppeared() {
+        startTimer()
+    }
 
     func back() {
         router.back()
@@ -101,6 +122,28 @@ final class QuizViewModel: ObservableObject {
         case (false, _, _): status = .unselected
         }
         return status
+    }
+
+    // MARK: - Timer Methods
+
+    private func startTimer() {
+        timerManager.start(duration: Constants.timerDuration) { [weak self] in
+            DispatchQueue.main.async {
+                self?.onTimerExpired()
+            }
+        }
+    }
+
+    private func onTimerExpired() {
+        isTimeUpAlertShown = true
+        timerManager.pause()
+
+        let quizResult: QuizResultEntity = .init(
+            completedAt: .now,
+            originalQuiz: quiz,
+            answersSelection: answersSelection
+        )
+        persistentStorage.saveQuizResult(quizResult)
     }
 
 }
