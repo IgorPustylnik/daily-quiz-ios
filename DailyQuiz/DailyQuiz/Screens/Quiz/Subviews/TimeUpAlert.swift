@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TimeUpAlert: View {
+struct InfoAlert: View {
 
     // MARK: - Constants
 
@@ -19,30 +19,32 @@ struct TimeUpAlert: View {
 
     // MARK: - Properties
 
-    let onRestart: () -> Void
-    private let feedbackGenerator = UINotificationFeedbackGenerator()
+    let title: String
+    let subtitle: String?
+    let buttonTitle: String
+    let onAction: () -> Void
 
     // MARK: - Body
 
     var body: some View {
         VStack(spacing: Constants.spacing) {
             VStack(spacing: Constants.textSpacing) {
-                Text("Время вышло")
+                Text(title)
                     .font(.title)
                     .fontWeight(.bold)
-                Text("Вы не успели завершить викторину. Попробуйте ещё раз!")
-            }
-            .multilineTextAlignment(.center)
 
-            Button(action: onRestart) {
-                Text("Начать заново".uppercased())
+                if let subtitle {
+                    Text(subtitle)
+                        .multilineTextAlignment(.center)
+                }
+            }
+
+            Button(action: onAction) {
+                Text(buttonTitle)
             }
             .buttonStyle(DQButtonStyle(.accent))
         }
         .dqContainerStyle()
         .padding(.horizontal, Constants.horizontalPadding)
-        .onAppear {
-            feedbackGenerator.notificationOccurred(.warning)
-        }
     }
 }

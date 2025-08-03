@@ -15,7 +15,6 @@ struct QuizView: View {
         static let verticalPadding: CGFloat = 32
         static let horizontalPadding: CGFloat = 26
         static let spacingBetweenQuestionAndNote: CGFloat = 16
-        static let logoWidth: CGFloat = 180
     }
 
     // MARK: - Properties
@@ -30,25 +29,18 @@ struct QuizView: View {
     // MARK: - Body
 
     var body: some View {
-        ZStack {
-            topBar
-                .frame(maxHeight: .infinity, alignment: .top)
-
-            VStack(spacing: Constants.spacingBetweenQuestionAndNote) {
-                QuizQuestionSection(viewModel: viewModel)
-
-                Text("Вернуться к предыдущим вопросам нельзя")
-                    .foregroundStyle(Color.App.white)
-                    .font(.caption)
-            }
-        }
-        .padding(.vertical, Constants.verticalPadding)
-        .padding(.horizontal, Constants.horizontalPadding)
+        TopBarViewContainer(
+            content: {
+                content
+            },
+            mode: .logo(namespace),
+            onBack: viewModel.canGoBack ? viewModel.back : nil
+        )
         .onAppear {
             viewModel.viewAppeared()
         }
-        .customAlert(isPresented: $viewModel.isTimeUpAlertShown) {
-            TimeUpAlert(onRestart: viewModel.restart)
+        .customAlert(isPresented: $viewModel.isTimeUpAlertPresented) {
+            timeUpAlert
         }
         .onChange(of: viewModel.resultsVisible) { visible in
             guard visible else {
@@ -65,23 +57,27 @@ struct QuizView: View {
 
     // MARK: - Subviews
 
-    private var topBar: some View {
-        ZStack {
-            Button {
-                viewModel.back()
-            } label: {
-                Image(systemName: "chevron.left")
-                    .tint(.white)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .opacity(viewModel.canGoBack ? 1 : 0)
+    private var content: some View {
+        VStack(spacing: Constants.spacingBetweenQuestionAndNote) {
+            QuizQuestionSection(viewModel: viewModel)
 
-            Image(.logo)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .foregroundStyle(.white)
-                .frame(width: Constants.logoWidth)
-                .matchedGeometryEffect(id: "logo", in: namespace)
+            Text("Вернуться к предыдущим вопросам нельзя")
+                .foregroundStyle(Color.App.white)
+                .font(.caption)
+
+            Spacer()
+        }
+        .padding(.vertical, Constants.verticalPadding)
+        .padding(.horizontal, Constants.horizontalPadding)
+    }
+
+    private var timeUpAlert: some View {
+        InfoAlert(
+            title: "Время вышло!",
+            subtitle: "Вы не успели завершить викторину. Попробуйте ещё раз!",
+            buttonTitle: "Начать заново".uppercased()
+        ) {
+            viewModel.restart()
         }
     }
 

@@ -35,14 +35,6 @@ struct QuizAnswersSection: View {
                 }
                 .disabled(viewModel.resultsVisible)
             }
-
-            Button {
-                viewModel.submit()
-            } label: {
-                Text(viewModel.submitButtonText.uppercased())
-            }
-            .buttonStyle(DQButtonStyle(.accent))
-            .disabled(!viewModel.isSubmittable || viewModel.resultsVisible)
         }
     }
 }

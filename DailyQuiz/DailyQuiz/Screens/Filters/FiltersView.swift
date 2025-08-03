@@ -31,10 +31,7 @@ struct FiltersView: View {
     // MARK: - Body
 
     var body: some View {
-        ZStack {
-            topBar
-                .frame(maxHeight: .infinity, alignment: .top)
-
+        TopBarViewContainer(content: {
             ZStack {
                 content
                     .opacity(viewModel.isLoading ? 0 : 1)
@@ -42,34 +39,13 @@ struct FiltersView: View {
                 CustomSpinner(style: .big)
                     .opacity(viewModel.isLoading ? 1 : 0)
             }
-        }
-        .padding(.vertical, Constants.verticalPadding)
-        .padding(.horizontal, Constants.horizontalPadding)
+        }, mode: .logo(namespace), onBack: viewModel.back)
     }
 
     // MARK: - Subviews
 
-    private var topBar: some View {
-        ZStack {
-            Button {
-                viewModel.back()
-            } label: {
-                Image(systemName: "chevron.left")
-                    .tint(.white)
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-
-            Image(.logo)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .foregroundStyle(.white)
-                .frame(width: Constants.logoWidth)
-                .matchedGeometryEffect(id: "logo", in: namespace)
-        }
-    }
-
     private var content: some View {
-        Group {
+        VStack {
             VStack(spacing: Constants.mainContainerSpacing) {
                 titleSection
 
@@ -94,6 +70,8 @@ struct FiltersView: View {
                     .foregroundStyle(.white)
             }
         }
+        .padding(.vertical, Constants.verticalPadding)
+        .padding(.horizontal, Constants.horizontalPadding)
     }
 
     private var titleSection: some View {

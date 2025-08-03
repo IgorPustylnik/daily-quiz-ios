@@ -52,6 +52,7 @@ struct AnswerView: View {
 
                 Text(text)
                     .foregroundStyle(foregroundColor)
+                    .multilineTextAlignment(.leading)
 
                 Spacer()
             }

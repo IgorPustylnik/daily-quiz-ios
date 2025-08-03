@@ -69,13 +69,30 @@ struct QuizResultsView: View {
 
     private var resultsHeader: some View {
         VStack(spacing: Constants.resultsHeaderSpacing) {
-            SectionTitleView("Результаты")
-
+            resultsHeaderTitle
             VStack(spacing: Constants.resultsHeaderInfoSpacing) {
                 Text("Категория: \(viewModel.quizResult.originalQuiz.category.displayString)")
                 Text("Сложность: \(viewModel.quizResult.originalQuiz.difficulty.displayString)")
             }
             .foregroundStyle(.white)
+        }
+
+    }
+
+    private var resultsHeaderTitle: some View {
+        ZStack {
+            if !viewModel.isBrief {
+                HStack {
+                    Button {
+                        viewModel.back()
+                    } label: {
+                        Image(systemName: "chevron.left")
+                            .foregroundStyle(.white)
+                    }
+                    Spacer()
+                }
+            }
+            SectionTitleView("Результаты")
         }
 
     }

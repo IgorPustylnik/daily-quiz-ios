@@ -39,7 +39,7 @@ final class QuizViewModel: ObservableObject {
     private(set) var timeExpired: Bool = false
 
     @Published
-    var isTimeUpAlertShown: Bool = false
+    var isTimeUpAlertPresented: Bool = false
 
     // MARK: - Computed Properties
 
@@ -167,7 +167,7 @@ final class QuizViewModel: ObservableObject {
     }
 
     private func onTimerExpired() {
-        isTimeUpAlertShown = true
+        isTimeUpAlertPresented = true
         timerManager.pause()
 
         let quizResult: QuizResultEntity = .init(

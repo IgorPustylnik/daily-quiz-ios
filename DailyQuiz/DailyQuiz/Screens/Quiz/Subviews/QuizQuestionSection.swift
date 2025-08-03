@@ -14,6 +14,7 @@ struct QuizQuestionSection: View {
     private enum Constants {
         static let answerCardSpacing: CGFloat = 24
         static let answersSpacing: CGFloat = 16
+        static let maxAnswersHeight: CGFloat = 500
     }
 
     // MARK: - Properties
@@ -32,16 +33,32 @@ struct QuizQuestionSection: View {
                 )
             }
 
-            Text(viewModel.questionNumerationDescription)
-                .fontWeight(.bold)
-                .foregroundStyle(Color.App.lightPurple)
+            ScrollView {
+                LazyVStack(spacing: Constants.answerCardSpacing) {
+                    Text(viewModel.questionNumerationDescription)
+                        .fontWeight(.bold)
+                        .foregroundStyle(Color.App.lightPurple)
 
-            Text(viewModel.currentQuestion.question)
-                .font(.title3)
-                .fontWeight(.semibold)
-                .multilineTextAlignment(.center)
+                    Text(viewModel.currentQuestion.question)
+                        .font(.title3)
+                        .fontWeight(.semibold)
+                        .multilineTextAlignment(.center)
 
-            QuizAnswersSection(viewModel: viewModel)
+                    QuizAnswersSection(viewModel: viewModel)
+
+                    Spacer()
+
+                    Button {
+                        viewModel.submit()
+                    } label: {
+                        Text(viewModel.submitButtonText.uppercased())
+                    }
+                    .buttonStyle(DQButtonStyle(.accent))
+                    .disabled(!viewModel.isSubmittable || viewModel.resultsVisible)
+                }
+            }
+            .scrollIndicators(.hidden)
+            .frame(maxHeight: Constants.maxAnswersHeight)
         }
         .dqContainerStyle()
     }
