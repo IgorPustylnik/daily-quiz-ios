@@ -69,6 +69,17 @@ final class QuizViewModel: ObservableObject {
         (timerManager.elapsedTime, timerManager.duration)
     }
 
+    var isCurrentQuestionCorrect: Bool {
+        let questionAnswers = currentQuestion.answers
+        for answer in questionAnswers {
+            let selected = answersSelection[answer] ?? false
+            if answer.isCorrect != selected {
+                return false
+            }
+        }
+        return true
+    }
+
     // MARK: - Init
 
     init(router: Router, quiz: QuizEntity, persistentStorage: PersistentStorage) {
