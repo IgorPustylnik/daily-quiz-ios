@@ -35,9 +35,9 @@ struct RadioView: View {
         case .unselected:
             image = nil
         case .selected:
-            image = Image(.checkmark)
+            image = Image(.checkmark1)
         case .correct:
-            image = Image(.checkmark)
+            image = Image(.checkmark1)
         case .wrong:
             image = Image(.xmark)
         }
