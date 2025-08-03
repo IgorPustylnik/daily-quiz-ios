@@ -13,6 +13,7 @@ final class QuizViewModel: ObservableObject {
 
     private enum Constants {
         static let timerDuration: TimeInterval = 60 * 5
+        static let answerHighlightDuration: TimeInterval = 2
     }
 
     // MARK: - Private Properties
@@ -99,16 +100,32 @@ final class QuizViewModel: ObservableObject {
     }
 
     func submit() {
-        if isSubmittable && currentQuestionIndex == quiz.questions.count - 1 {
-            let quizResult: QuizResultEntity = .init(
-                completedAt: .now,
-                originalQuiz: quiz,
-                answersSelection: answersSelection
-            )
-            persistentStorage.saveQuizResult(quizResult)
-            router.showQuizResults(quizResult, isShownAfterTaking: true)
-        } else if isSubmittable {
-            currentQuestionIndex += 1
+        guard isSubmittable else {
+            return
+        }
+
+        resultsVisible = true
+        timerManager.pause()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.answerHighlightDuration) { [weak self] in
+            guard let self else {
+                return
+            }
+            resultsVisible = false
+
+            if currentQuestionIndex == quiz.questions.count - 1 {
+                let quizResult = QuizResultEntity(
+                    completedAt: .now,
+                    originalQuiz: quiz,
+                    answersSelection: answersSelection
+                )
+                timerManager.stop()
+                persistentStorage.saveQuizResult(quizResult)
+                router.showQuizResults(quizResult, isShownAfterTaking: true)
+            } else {
+                currentQuestionIndex += 1
+                timerManager.resume()
+            }
         }
     }
 
